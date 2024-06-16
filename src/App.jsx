@@ -1,9 +1,10 @@
-function App() {
+import MateriPage from "./assets/Pages/MateriPage"
 
+function App() {
   
   return (
     <>
-      
+      <MateriPage></MateriPage>
     </>
   )
 }
