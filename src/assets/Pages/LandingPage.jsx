@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import ButtonAbout from "../Component/ButtonAbout"
 import LandingCard from "../Component/LandingCard"
 import Footer from "../Component/Footer"
 
 const LandingPage = () => {
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuAnimation, setMenuAnimation] = useState("");
 
     const cardData = [
         {
@@ -17,13 +21,76 @@ const LandingPage = () => {
         },
         {
           id : 3,
-          cardTitle : "Benefit Learn Javasript",
+          cardTitle : "Benefit Javasript",
           imageUrl : "../public/img/javascript3.jpg"
         }
       ]
+    
+    const Links = [
+      {
+        name : "Author",
+        link : "#author"
+      },
+      {
+        name : "About Us",
+        link : "#about"
+      },
+      {
+        name : "What Is Javascript",
+        link : "#what-is-javascript"
+      }
+    ]
+
+    const toggleMenu = () => {
+      if (isMenuOpen) {
+        setMenuAnimation("menu-exit");
+        setTimeout(() => {
+          setIsMenuOpen(false);
+          setMenuAnimation("");
+        }, 500); // Waktu harus sesuai dengan durasi animasi
+      } else {
+        setIsMenuOpen(true);
+        setMenuAnimation("menu-enter");
+      }
+    };
 
     return(
         <>
+       <header className="py-5 w-full bg-white bg-opacity-90 fixed top-0 z-10">
+        <nav className="lg:px-5 md:px-5 flex justify-between items-center px-3 relative">
+          <h1 className="text-2xl font-black text-yellow-300 italic">LutfiScript</h1>
+
+          <div>
+            <div className="md:hidden absolute top-1 right-4" onClick={toggleMenu}>
+              <button className="text-black focus:outline-none">
+                {isMenuOpen ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                  </svg>
+                )}
+              </button>
+            </div>
+
+            <ul className={`md:flex md:gap-x-7 md:static absolute bg-white bg-opacity-90 w-full left-0 top-12 md:top-0 md:bg-transparent ${isMenuOpen ? 'block' : 'hidden'} ${menuAnimation} md:flex-row flex-col md:items-center py-10 md:py-0`}>
+              {Links.map((data) => (
+                <li key={data.name} className="text-center md:text-left">
+                  <a href={data.link} className="text-black hover:text-yellow-300 duration-500 transition sm:text-lg block py-2 md:py-0">{data.name}</a>
+                </li>
+              ))}
+              <div className='text-center md:text-start'>
+                <button className="bg-yellow-300 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">Get Started</button>
+              </div>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+
+
     {/* hero section start */}
     <section id="hero" className="w-full h-[100vh] flex flex-col items-start justify-end bg-cover bg-top bg-no-repeat bg-fixed pl-4 pb-52 sm:pb-8 md:pb-20 md:pl-8 lg:pb-24" style={{ backgroundImage: "url('../public/img/login.jpg')"}}>
       <h1 className="text-white  text-base w-2/3 sm:w-2/5 capitalize sm:text-lg md:text-2xl lg:w-2/3 lg:text-4xl">"Learn <span className="text-yellow-300 font-bold italic">JavaScript</span> at your own pace with <span className="text-yellow-300 font-bold italic">LutfiScript</span>  flexible courses."</h1>
@@ -36,7 +103,7 @@ const LandingPage = () => {
     {/* hero section end */}
 
     {/* portfolio start */}
-    <section id="portfolio" className="w-full py-10 px-4 sm:px-10 sm:py-5 md:px-4 md:py-10 lg:py-12 lg:px-6">
+    <section id="author" className="w-full py-10 px-4 sm:px-10 sm:py-5 md:px-4 md:py-10 lg:py-12 lg:px-6">
       <div className="md:w-full md:flex">
 
 
@@ -85,7 +152,7 @@ const LandingPage = () => {
     {/* about section end */}
 
     {/* javascript section start */}
-    <section id="javascript" className="w-full py-8">
+    <section id="what-is-javascript" className="w-full py-8">
       <h1 className="text-white text-center capitalize font-black text-4xl sm:text-6xl md:text-5xl">Why <span className="italic text-yellow-300">Javascript ?</span></h1>
 
       <div className="w-full mt-7 sm:mt-10 md:flex md:justify-evenly md:gap-y-4 lg:px-10">
