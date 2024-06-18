@@ -1,5 +1,6 @@
 import HeroLanding from "../Component/HeroLanding";
 import Footer from "../Component/Footer";
+import { Link } from "react-router-dom";
 
 const FeaturesPage = () => {
     return (
@@ -41,7 +42,7 @@ const FeaturesPage = () => {
         </div>
 
         <div className="text-center md:mt-8">
-        <button className="bg-yellow-300 px-4 py-2 rounded-xl mb-4 shadow-lg md:text-lg md:px-6 hover:bg-yellow-500 transition duration-500" >Get Started</button>
+        <Link to="/login" className="bg-yellow-300 px-4 py-2 rounded-xl mb-4 shadow-lg md:text-lg md:px-6 hover:bg-yellow-500 transition duration-500" >Get Started</Link>
         </div>
       </section>
 
