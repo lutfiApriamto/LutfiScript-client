@@ -1,30 +1,57 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import ButtonAbout from "../Component/ButtonAbout"
 import LandingCard from "../Component/LandingCard"
 import Footer from "../Component/Footer"
+import Sosmed from '../Component/Sosmed';
 
 const LandingPage = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuAnimation, setMenuAnimation] = useState("");
 
-    const cardData = [
+    const cardDataJavascript = [
         {
           id : 1,
           cardTitle : "What Is JavaScript ?",
-          imageUrl : "../public/img/javascript1.jpg"
+          imageUrl : "../public/img/javascript1.jpg",
+          description : "",
+          url: "",
         },
         {
           id : 2,
           cardTitle : "Javascript Historys",
-          imageUrl : "../public/img/javascript2.jpg"
+          imageUrl : "../public/img/javascript2.jpg",
+          description : "",
+          url : ""
         },
         {
           id : 3,
           cardTitle : "Benefit Javasript",
-          imageUrl : "../public/img/javascript3.jpg"
+          imageUrl : "../public/img/javascript3.jpg",
+          description : "",
+          url : ""
         }
       ]
+
+      const cardDataAbout = [
+        {
+          id: 1,
+          title: "About us",
+          path: "/about-us",
+        },
+        {
+          id: 2,
+          title: "Features",
+          path: "/features",
+        },
+        {
+          id: 3,
+          title: "Benefits",
+          path: "/benefits",
+        }
+      ];
+      
     
     const Links = [
       {
@@ -57,37 +84,37 @@ const LandingPage = () => {
     return(
         <>
        <header className="py-5 w-full bg-white bg-opacity-90 fixed top-0 z-10">
-        <nav className="lg:px-5 md:px-5 flex justify-between items-center px-3 relative">
-          <h1 className="text-2xl font-black text-yellow-300 italic">LutfiScript</h1>
+      <nav className="lg:px-5 md:px-5 flex justify-between items-center px-3 relative">
+        <h1 className="text-2xl font-black text-yellow-300 italic">LutfiScript</h1>
 
-          <div>
-            <div className="md:hidden absolute top-1 right-4" onClick={toggleMenu}>
-              <button className="text-black focus:outline-none">
-                {isMenuOpen ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                  </svg>
-                )}
-              </button>
-            </div>
-
-            <ul className={`md:flex md:gap-x-7 md:static absolute bg-white bg-opacity-90 w-full left-0 top-12 md:top-0 md:bg-transparent ${isMenuOpen ? 'block' : 'hidden'} ${menuAnimation} md:flex-row flex-col md:items-center py-10 md:py-0`}>
-              {Links.map((data) => (
-                <li key={data.name} className="text-center md:text-left">
-                  <a href={data.link} className="text-black hover:text-yellow-300 duration-500 transition sm:text-lg block py-2 md:py-0">{data.name}</a>
-                </li>
-              ))}
-              <div className='text-center md:text-start'>
-                <button className="bg-yellow-300 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">Get Started</button>
-              </div>
-            </ul>
+        <div>
+          <div className="md:hidden absolute top-1 right-4" onClick={toggleMenu}>
+            <button className="text-black focus:outline-none">
+              {isMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+              )}
+            </button>
           </div>
-        </nav>
-      </header>
+
+          <ul className={`md:flex md:gap-x-7 md:static absolute bg-white bg-opacity-90 w-full left-0 top-12 md:top-0 md:bg-transparent ${isMenuOpen ? 'block' : 'hidden'} ${menuAnimation} md:flex-row flex-col md:items-center py-10 md:py-0`}>
+            {Links.map((data) => (
+              <li key={data.name} className="text-center md:text-left">
+                <a href={data.link} className="text-black hover:text-yellow-300 duration-500 transition sm:text-lg block py-2 md:py-0">{data.name}</a>
+              </li>
+            ))}
+            <div className='text-center md:text-start'>
+              <Link to="/login" className="bg-yellow-300 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">Getting Started</Link>
+            </div>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
 
 
@@ -96,7 +123,7 @@ const LandingPage = () => {
       <h1 className="text-white  text-base w-2/3 sm:w-2/5 capitalize sm:text-lg md:text-2xl lg:w-2/3 lg:text-4xl">"Learn <span className="text-yellow-300 font-bold italic">JavaScript</span> at your own pace with <span className="text-yellow-300 font-bold italic">LutfiScript</span>  flexible courses."</h1>
 
       <div className="mt-2 sm:mt-4 lg:mt-5">
-        <button className="bg-yellow-300 text-xs px-3 py-2 lg:px-5 md:px-4 md:py-3 md:text-base rounded-lg mr-7 md:mr-5 lg:mr-12 font-bold hover:bg-yellow-600  transition duration-700">Get Started</button>
+        <Link to="/login" className="bg-yellow-300 text-xs px-3 py-2 lg:px-5 md:px-4 md:py-3 md:text-base rounded-lg mr-7 md:mr-5 lg:mr-12 font-bold hover:bg-yellow-600  transition duration-700 italic">Getting Started</Link>
         <button className="bg-white text-white bg-opacity-10 border border-white text-xs px-3 py-2 lg:px-5 md:px-4 md:py-3 md:text-base rounded-lg  font-bold hover:bg-black hover:bg-opacity-55 transition duration-700">Learn More</button>
       </div>
     </section>
@@ -117,11 +144,11 @@ const LandingPage = () => {
           <p className="text-white text-base font-light sm:px-7 md:px-0 md:text-sm lg:text-xl">
           Halo perkenalkan namaku Muhammad Lutfi Apriamto, aku adalah seorang front-end developer. tujuanku membuat project ini agar kalian dapat mempelajari bahasa pemrograman javascript dengan mudah. selamat belajar !!
           </p>
-          <div></div>
+          <Sosmed></Sosmed>
           <div>
           <button className="bg-yellow-300 text-xs px-3 py-2 lg:px-5  md:text-sm rounded-lg font-bold hover:bg-yellow-600  transition duration-700">Contact Me!</button>
           </div>
-          
+
         </div>
 
       </div>
@@ -136,10 +163,15 @@ const LandingPage = () => {
           <h1 className="capitalize text-center text-3xl font-bold sm:text-5xl md:text-3xl md:text-start lg:text-4xl lg:w-3/4 mb-8 md:mb-0" >Everythings about <span className="text-yellow-300 italic">LutfiScript</span></h1>
 
           <div className="sm:px-36 md:px-0 md:w-3/4">
-            <ButtonAbout title="About Us"/>
-            <ButtonAbout title="Features"/>
-            <ButtonAbout title="Benefits"/>
-          </div>
+  {cardDataAbout.map(data => (
+    <ButtonAbout
+      key={data.id}
+      title={data.title}
+      path={data.path}
+    />
+  ))}
+</div>
+
           
         </div>
 
@@ -156,7 +188,7 @@ const LandingPage = () => {
       <h1 className="text-white text-center capitalize font-black text-4xl sm:text-6xl md:text-5xl">Why <span className="italic text-yellow-300">Javascript ?</span></h1>
 
       <div className="w-full mt-7 sm:mt-10 md:flex md:justify-evenly md:gap-y-4 lg:px-10">
-        {cardData.map((card) => (
+        {cardDataJavascript.map((card) => (
           <LandingCard
           key={card.id}
           cardTitle={card.cardTitle}
