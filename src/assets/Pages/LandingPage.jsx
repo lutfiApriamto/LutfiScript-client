@@ -122,7 +122,7 @@ const LandingPage = () => {
                 </li>
               ))}
               <div className='text-center md:text-start'>
-                <Link to="/login" className="bg-yellow-300 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">Getting Started</Link>
+                <Link to="/login"  className="bg-yellow-300 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">Getting Started</Link>
               </div>
             </ul>
           </div>

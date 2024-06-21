@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import HomePage from "./HomePage";
-import ModulesPage from "./ModulesPage";
-import GamePage from "./GamePage";
+import HomePage from "../Layout/HomePage";
+import ModulesPage from "../Layout/ModulesPage";
+import GamePage from "../Layout/GamePage";
 
 const LutfiScriptPage = () => {
   const [currentPage, setCurrentPage] = useState("Home");
