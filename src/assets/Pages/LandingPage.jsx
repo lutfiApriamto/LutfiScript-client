@@ -18,7 +18,7 @@ const LandingPage = () => {
       id: 1,
       cardTitle: "What Is JavaScript?",
       imageUrl: "../public/img/javascript1.jpg",
-      description: `      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe quos, expedita exercitationem molestiae aut totam eos dolores mollitia eaque accusantium voluptatibus officiis nesciunt. Voluptatem totam expedita cum excepturi dolor voluptatum explicabo deserunt suscipit. Eveniet aliquam repellendus saepe tenetur perspiciatis expedita, officia sunt ratione tempora porro, doloribus adipisci perferendis blanditiis asperiores!
+      description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe quos, expedita exercitationem molestiae aut totam eos dolores mollitia eaque accusantium voluptatibus officiis nesciunt. Voluptatem totam expedita cum excepturi dolor voluptatum explicabo deserunt suscipit. Eveniet aliquam repellendus saepe tenetur perspiciatis expedita, officia sunt ratione tempora porro, doloribus adipisci perferendis blanditiis asperiores!
 `,
       url: "https://id.wikipedia.org/wiki/JavaScript",
     },
@@ -96,7 +96,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <header className="py-5 w-full bg-white bg-opacity-90 fixed top-0 z-10">
+      <header className="py-5 w-full bg-white bg-opacity-50 backdrop-blur-md fixed top-0 z-10">
         <nav className="lg:px-5 md:px-5 flex justify-between items-center px-3 relative">
           <h1 className="text-2xl font-black text-yellow-300 italic">LutfiScript</h1>
 
@@ -115,7 +115,7 @@ const LandingPage = () => {
               </button>
             </div>
 
-            <ul className={`md:flex md:gap-x-7 md:static absolute bg-white bg-opacity-90 w-full left-0 top-12 md:top-0 md:bg-transparent ${isMenuOpen ? 'block' : 'hidden'} ${menuAnimation} md:flex-row flex-col md:items-center py-10 md:py-0`}>
+            <ul className={`md:flex md:gap-x-7 md:static absolute bg-white bg-opacity-10 w-full left-0 top-12 md:top-0 md:bg-transparent ${isMenuOpen ? 'block' : 'hidden'} ${menuAnimation} md:flex-row flex-col md:items-center py-10 md:py-0`}>
               {Links.map((data) => (
                 <li key={data.name} className="text-center md:text-left">
                   <a href={data.link} className="text-black hover:text-yellow-300 duration-500 transition sm:text-lg block py-2 md:py-0">{data.name}</a>
