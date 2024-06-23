@@ -8,6 +8,27 @@ const LoginPage = () => {
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
+  axios.defaults.withCredentials = true
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:3000/auth/login', {
+        email,
+        password,
+    }).then(response => {
+        console.log(response);
+        alert("Berhasil Login");
+        navigate('/lutfiscript');
+    }).catch(err => {
+        if (err.response && err.response.data.message) {
+            alert(err.response.data.message); // Menampilkan pesan error dari server
+        } else {
+            alert("Terjadi kesalahan saat login"); // Pesan default jika tidak ada pesan dari server
+        }
+        console.log(err)
+    });
+}
+
+
   return (
     <>
       <section
@@ -25,7 +46,9 @@ const LoginPage = () => {
           <h1 className="text-white text-center font-black text-2xl capitalize lg:text-3xl">
             Log in to <span className="text-yellow-300">LutfiScript</span>
           </h1>
-          <form className="w-full mt-5 md:mt-4 lg:mt-7">
+          <form 
+          onSubmit={handleSubmit}
+          className="w-full mt-5 md:mt-4 lg:mt-7">
             <label
               htmlFor="email"
               className="text-white  block font-bold mb-1 text-lg md:text-md lg:text-xl"
@@ -66,6 +89,7 @@ const LoginPage = () => {
             >
               Login
             </button>
+            <Link to="/forgotpassword" className="text-yellow-300 italic underline">Forgot password ?</Link>
           </form>
           <p className="text-white text-center mt-3 text-sm italic font-thin lg:mt-5">
             Copyright © 2024 by{" "}

@@ -6,10 +6,30 @@ import axios from "axios";
 
 const RegisterPage = () => {
 
+  const [username, setUsername] = useState();
     const [email, setEmail] = useState();
-    const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      axios.post('http://localhost:3000/auth/register', {
+          email,
+          username,
+          password,
+      }).then(response => {
+          console.log(response);
+          alert("Data berhasil ditambahkan");
+          navigate('/login');
+      }).catch(err => {
+          if (err.response && err.response.status === 400) {
+              alert(err.response.data.message); // Menampilkan pesan error dari server
+          } else {
+              alert("Terjadi kesalahan saat mendaftar"); // Pesan default jika tidak ada pesan dari server
+          }
+          navigate('/register')
+      });
+  }
 
   return (
     <>
@@ -28,7 +48,10 @@ const RegisterPage = () => {
           <h1 className="text-white text-center font-black text-2xl capitalize lg:text-3xl">
             Register to <span className="text-yellow-300">LutfiScript</span>
           </h1>
-          <form className="w-full mt-5 md:mt-4 lg:mt-7">
+          <form
+          onSubmit={handleSubmit}
+          className="w-full mt-5 md:mt-4 lg:mt-7"
+          >
             <label
               htmlFor="email"
               className="text-white  block font-bold mb-1 text-lg md:text-md lg:text-xl"
