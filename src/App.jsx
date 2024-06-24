@@ -9,6 +9,7 @@ import LutfiScriptPage from "./assets/Pages/LutfiScriptPage"
 import MateriPage from './assets/Layout/MateriPage';
 import ForgotPassword from './assets/Pages/ForgotPassword'
 import ResetPassword from './assets/Pages/ResetPassword';
+import Quiz from './assets/Quiz/MainQuiz';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/benefits" element={<BenefitPage />} />
         <Route path="/lutfiscript" element={<LutfiScriptPage />} />
         <Route path="/lutfiscript/materi" element={<MateriPage />} />
+        <Route path="/lutfiscript/quiz" element={<Quiz />} />
       </Routes>
     </BrowserRouter>
   );
