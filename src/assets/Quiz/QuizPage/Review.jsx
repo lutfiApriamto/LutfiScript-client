@@ -28,9 +28,6 @@ const Review = ({answer, index, setDisplay, handlePrev, handleNext}) => {
                     ) : (
                         <IoCloseSharp className="h-4 w-4 md:h-6 md:w-6 font-bold text-red-600" />
                     )}
-
-                    {/* <FaCheck className="h-4 w-4 text-emerald-500"/>
-                    <IoCloseSharp className="h-4 w-4 md:h-6 md:w-6 font-bold text-red-600" /> */}
                 </div>
             </div>
             <div className="px-4 sm:px-0 sm:w-2/3 lg:w-1/3">
