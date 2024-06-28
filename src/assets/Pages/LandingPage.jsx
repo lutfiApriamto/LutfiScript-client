@@ -18,7 +18,7 @@ const LandingPage = () => {
       id: 1,
       cardTitle: "What Is JavaScript?",
       imageUrl: "../public/img/javascript1.jpg",
-      description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe quos, expedita exercitationem molestiae aut totam eos dolores mollitia eaque accusantium voluptatibus officiis nesciunt. Voluptatem totam expedita cum excepturi dolor voluptatum explicabo deserunt suscipit. Eveniet aliquam repellendus saepe tenetur perspiciatis expedita, officia sunt ratione tempora porro, doloribus adipisci perferendis blanditiis asperiores!
+      description: `JavaScript (disingkat JS) adalah suatu bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian besar penjelajah web populer seperti Google Chrome, Internet Explorer (IE), Mozilla Firefox, Netscape dan Opera. Kode JavaScript dapat disisipkan dalam halaman web menggunakan tag script.[11] JavaScript merupakan salah satu teknologi inti World Wide Web selain HTML dan CSS. JavaScript membantu membuat halaman web interaktif dan merupakan bagian aplikasi web yang esensial...
 `,
       url: "https://id.wikipedia.org/wiki/JavaScript",
     },
@@ -26,14 +26,14 @@ const LandingPage = () => {
       id: 2,
       cardTitle: "Javascript Historys",
       imageUrl: "../public/img/javascript2.jpg",
-      description: "bcd",
+      description: `Sejarah sebuah teknologi selalu menarik untuk diikuti, mulai dari berdirinya sebuah perusahaan, pengembangan berbagai fitur, munculnya pesaing, trik bisnis yang digunakan, hingga kemunduran perusahaan tersebut. Jika berbicara tentang JavaScript, perusahaan yang dimaksud adalah Netscape Communications. Disinilah JavaScript "lahir" ... `,
       url: "https://www.duniailkom.com/tutorial-belajar-javascript-sejarah-dan-perkembangan-versi-javascript/"
     },
     {
       id: 3,
       cardTitle: "Benefit Javasript",
       imageUrl: "../public/img/javascript3.jpg",
-      description: "cde",
+      description: `Saat ini, belajar JavaScript memiliki banyak manfaat. Salah satunya karena JavaScript sendiri digunakan oleh berbagai website penelusur besar seperti Internet Explorer, Netscape, hingga Opera. Selain itu, perusahaan-perusahaan besar seperti Microsoft, Amazon, dan PayPal juga menggunakan jasa dari JavaScript. Lalu, apa saja alasan selanjutnya mengapa banyak perusahaan menggunakan bahasa pemrograman JavaScript dan belajar JavaScript bermanfaat untuk berkarir di bidang teknologi? Berikut alasannya...`,
       url: "https://glints.com/id/lowongan/manfaat-belajar-javascript/"
     }
   ];
@@ -96,7 +96,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <header className="py-5 w-full bg-white bg-opacity-50 backdrop-blur-md fixed top-0 z-10">
+      <header className="py-5 w-full bg-white bg-opacity-10 backdrop-blur-md fixed top-0 z-10">
         <nav className="lg:px-5 md:px-5 flex justify-between items-center px-3 relative">
           <h1 className="text-2xl font-black text-yellow-300 italic">LutfiScript</h1>
 
@@ -115,13 +115,13 @@ const LandingPage = () => {
               </button>
             </div>
 
-            <ul className={`md:flex md:gap-x-7 md:static absolute bg-white bg-opacity-10 w-full left-0 top-12 md:top-0 md:bg-transparent ${isMenuOpen ? 'block' : 'hidden'} ${menuAnimation} md:flex-row flex-col md:items-center py-10 md:py-0`}>
+            <ul className={`md:flex md:gap-x-7 md:static absolute bg-white bg-opacity-30 w-full left-0 top-12 md:top-0 md:bg-transparent ${isMenuOpen ? 'block' : 'hidden'} ${menuAnimation} md:flex-row flex-col md:items-center py-10 md:py-0`}>
               {Links.map((data) => (
                 <li key={data.name} className="text-center md:text-left">
                   <a href={data.link} className="text-black hover:text-yellow-300 duration-500 transition sm:text-lg block py-2 md:py-0">{data.name}</a>
                 </li>
               ))}
-              <div className='text-center md:text-start'>
+              <div className='text-center md:text-start mt-7 md:mt-0'>
                 <Link to="/login"  className="bg-yellow-300 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">Getting Started</Link>
               </div>
             </ul>
@@ -153,9 +153,6 @@ const LandingPage = () => {
               Halo perkenalkan namaku Muhammad Lutfi Apriamto, aku adalah seorang front-end developer. tujuanku membuat project ini agar kalian dapat mempelajari bahasa pemrograman javascript dengan mudah. selamat belajar !!
             </p>
             <Sosmed />
-            <div>
-              <button className="bg-yellow-300 text-xs px-3 py-2 lg:px-5  md:text-sm rounded-lg font-bold hover:bg-yellow-600  transition duration-700">Contact Me!</button>
-            </div>
           </div>
         </div>
       </section>

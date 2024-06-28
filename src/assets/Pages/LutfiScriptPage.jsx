@@ -128,30 +128,30 @@ const LutfiScriptPage = () => {
             <ul
               className={`md:flex md:gap-x-7 md:static absolute bg-white bg-opacity-30 w-full left-0 top-12 md:top-0 md:bg-transparent ${
                 isMenuOpen ? "block" : "hidden"
-              } ${menuAnimation}  md:flex-row flex-col items-center py-10 md:py-0`}
+              } ${menuAnimation}  md:flex-row flex-col md:items-center py-10 md:py-0`}
             >
               {Links.map((data) => (
                 <li
                   key={data.name}
-                  className={`text-center ${
+                  className={` flex justify-center w-full ${
                     currentPage === data.name ? "text-yellow-300" : "text-black"
                   }`}
                 >
                   <button
                     onClick={() => handlePageChange(data.name)}
-                    className="hover:text-yellow-300 duration-500 transition sm:text-lg block py-2 md:py-0 focus:outline-none"
+                    className="hover:text-yellow-300 duration-500 transition sm:text-lg block  py-2 md:py-0 focus:outline-none"
                   >
                     {data.name}
                   </button>
                 </li>
               ))}
-              <div className="">
+              <div className="text-center mt-7 md:mt-0">
                 <Link
                 onClick={handleLogout}
                   to="/"
                   className="bg-red-600 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4"
                 >
-                  Log Out
+                  LogOut
                 </Link>
               </div>
             </ul>
