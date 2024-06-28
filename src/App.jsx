@@ -11,6 +11,7 @@ import ForgotPassword from './assets/Pages/ForgotPassword'
 import ResetPassword from './assets/Pages/ResetPassword';
 import Quiz from './assets/Quiz/MainQuiz';
 import MainAdmin from './assets/Admin/MainAdmin';
+import EditModule from './assets/Admin/PageAdmin.jsx/EditModule';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/lutfiscript/quiz" element={<Quiz />} />
 
         <Route path="/admin" element={<MainAdmin />} />
+        <Route path="/admin/editmodule/:id" element={<EditModule />} />
       </Routes>
     </BrowserRouter>
   );

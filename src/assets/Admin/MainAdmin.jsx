@@ -19,7 +19,10 @@ const MainAdmin = () => {
             <div className="relative w-full">
             {display === 'home' && <Home/>}
             {display === 'datauser' && <DataUser/>}
-            {display === 'addmodules' && <AddModules/>}
+            {display === 'addmodules' && 
+            <AddModules
+                setDisplay={setDisplay}
+            />}
             {display === 'viewmodules' && <ViewModules/>}
             {display === 'feedback' && <FeedBack/>}
             </div>

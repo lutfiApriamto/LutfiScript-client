@@ -16,6 +16,7 @@ const LoginPage = () => {
         password,
     }).then(response => {
         console.log(response);
+        localStorage.setItem("token", response.data.token)
         alert("Berhasil Login");
         navigate('/lutfiscript');
     }).catch(err => {

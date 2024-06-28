@@ -1,13 +1,52 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import HomePage from "../Layout/HomePage";
 import ModulesPage from "../Layout/ModulesPage";
 import GamePage from "../Layout/GamePage";
+import axios from 'axios'
+import { jwtDecode } from "jwt-decode";
+
+
 
 const LutfiScriptPage = () => {
+
   const [currentPage, setCurrentPage] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State untuk mengontrol keadaan menu terbuka
   const [menuAnimation, setMenuAnimation] = useState("");
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate()
+  
+  
+
+  useEffect(() => {
+    const getTokenAndDecode = async () => {
+      const token = await localStorage.getItem("token");
+      if (token) {
+        try {
+          const decoded = jwtDecode(token);
+          setUsername(decoded); // Menyimpan informasi yang di-decode dari token
+          console.log(decoded);
+        } catch (error) {
+          console.error("Invalid token");
+        }
+      } else {
+        navigate('/'); // Redirect ke halaman login jika token tidak ada
+      }
+    };
+    
+    getTokenAndDecode();
+  }, [navigate]);
+
+  axios.defaults.withCredentials = true
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    axios.get('http://localhost:3000/auth/logout')
+    .then(res => {
+      if(res.data.status){
+        navigate('/')
+      }
+    }).catch(err => console.log(err)) 
+  }
 
   // Fungsi untuk mengubah keadaan menu terbuka/tutup
   const toggleMenu = () => {
@@ -44,7 +83,7 @@ const LutfiScriptPage = () => {
     <>
       <header className="py-5 w-full bg-white bg-opacity-10 fixed top-0 z-10 backdrop-blur-md">
         <nav className="lg:px-5 md:px-5 flex justify-between items-center px-3 relative">
-          <h1 className="text-2xl font-black text-yellow-300 italic">Username</h1>
+          <h1 className="text-2xl font-black text-yellow-300 italic">{username.username}</h1>
 
           <div>
             <div
@@ -108,6 +147,7 @@ const LutfiScriptPage = () => {
               ))}
               <div className="">
                 <Link
+                onClick={handleLogout}
                   to="/"
                   className="bg-red-600 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4"
                 >

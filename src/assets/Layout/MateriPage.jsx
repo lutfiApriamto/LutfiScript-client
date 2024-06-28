@@ -35,13 +35,13 @@ const MateriPage = () =>{
     <form action="">
       <div className="md:flex md:w-full md:gap-x-3">
         <div className="md:w-1/2">
-        <label htmlFor="email" className="w-full mb-1 block font-bold sm:text-xl sm:mb-3 md:w-1/2">Email</label>
-        <input type="email" placeholder="Email ..." name="email" id="email" className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3 "/>
+        <label htmlFor="fullname" className="w-full mb-1 block font-bold sm:text-xl sm:mb-3 md:w-1/2">Fullname</label>
+        <input type="text" placeholder="Fullname ..." name="" id="fullname" className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3 "/>
         </div>
 
         <div className="md:w-1/2">
-        <label htmlFor="fullname" className="w-full mb-1 block font-bold sm:text-xl sm:mb-3 md:w-1/2">Fullname</label>
-        <input type="text" placeholder="Fullname ..." name="" id="fullname" className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3 "/>
+        <label htmlFor="nohp" className="w-full mb-1 block font-bold sm:text-xl sm:mb-3 md:w-1/2">Phone Number</label>
+        <input type="number" placeholder="Phone Number ..." name="nohp" id="nohp" className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3 "/>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ const MateriPage = () =>{
       <label htmlFor="suggestion" className="w-full mb-1 block font-bold sm:text-xl sm:mb-3">Suggestion</label>
       <textarea name="suggestion" id="suggestion" className="w-full border border-black h-44 rounded-md px-2 py-2" placeholder="Enter Your Suggestion here ..."></textarea>
       <div className="text-center mt-3">
-        <button className="py-2 px-3 bg-black text-white rounded-xl">Send Message</button>
+        <button type="submit" className="py-2 px-3 bg-black text-white rounded-xl">Send Message</button>
       </div>
     </form>
   </div>
