@@ -12,6 +12,7 @@ import ResetPassword from './assets/Pages/ResetPassword';
 import Quiz from './assets/Quiz/MainQuiz';
 import MainAdmin from './assets/Admin/MainAdmin';
 import EditModule from './assets/Admin/PageAdmin.jsx/EditModule';
+import ViewUser from './assets/Admin/PageAdmin.jsx/ViewUser';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
 
         <Route path="/admin" element={<MainAdmin />} />
         <Route path="/admin/editmodule/:id" element={<EditModule />} />
+        <Route path="/admin/viewuser/:id" element={<ViewUser />} />
       </Routes>
     </BrowserRouter>
   );

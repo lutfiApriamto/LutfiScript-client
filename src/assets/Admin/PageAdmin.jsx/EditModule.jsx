@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 
-const EditModule = ({setDisplay}) => {
+const EditModule = () => {
 
     const [judul, setJudul] = useState("")
     const [link, setLink] = useState("")
@@ -16,7 +16,7 @@ const EditModule = ({setDisplay}) => {
     },[])
 
     const getModuleByID = async () => {
-        const response = await axios(`http://localhost:3000/modules/${id}/getModulesByID`)
+        const response = await axios.get(`http://localhost:3000/modules/${id}/getModulesByID`)
         setJudul(response.data.judul)
         setLink(response.data.link)
         setDesc(response.data.desc)
