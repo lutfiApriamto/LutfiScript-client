@@ -30,7 +30,7 @@ function App() {
 
         {/* tidak bisa di akses sebelum login dengan akun yang benar */}
         <Route path="/lutfiscript" element={<LutfiScriptPage />} />
-        <Route path="/lutfiscript/materi" element={<MateriPage />} />
+        <Route path="/lutfiscript/materi/:id" element={<MateriPage />} />
         <Route path="/lutfiscript/quiz" element={<Quiz />} />
 
         <Route path="/admin" element={<MainAdmin />} />
