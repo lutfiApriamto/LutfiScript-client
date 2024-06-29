@@ -20,10 +20,17 @@ const Score = ({setDisplay, score, setIndex})=> {
                 <p className="text-emerald-500 font-bold text-lg sm:text-xl">Benar : {score.true}</p>
                 <p className="text-red-600 font-bold text-lg sm:text-xl">salah : {score.false}</p>
             </div>
-            <div>
+            <div className="">
                 <button 
                     onClick={handleClick}
-                    className="text-white bg-black px-4 py-2 rounded-lg hover:bg-slate-900 transition duration-300 sm:text-xl">Review Answer</button>
+                    className="text-white mr-5 bg-black px-4 py-2 rounded-lg hover:bg-slate-900 transition duration-300 sm:text-xl">
+                        Review Answer
+                </button>
+                <button 
+                    onClick={() => setDisplay('submitresult')}
+                    className="text-white bg-black px-4 py-2 rounded-lg hover:bg-slate-900 transition duration-300 sm:text-xl">
+                        Submit results
+                </button>
             </div>
         </div>
             

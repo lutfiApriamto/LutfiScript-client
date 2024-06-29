@@ -4,6 +4,7 @@ import Start from "./QuizPage/Start"
 import Question from "./QuizPage/Question"
 import Score from "./QuizPage/Score"
 import Review from "./QuizPage/Review"
+import SubmitResult from "./QuizPage/SubmitResult"
 import { useState } from "react"
 
 
@@ -13,6 +14,7 @@ const Quiz = ()=> {
     const [score, setScore] = useState(0)
     const [index, setIndex] = useState(0)
     const [answer, setAnswer] = useState({})
+    const judul = "Quiz Pengenalan Javascript"
 
     const handleNext = () => {
         setIndex(index => index + 1)
@@ -34,6 +36,7 @@ const Quiz = ()=> {
             <HeaderQuiz
                 index={index}
                 display={display}
+                judul={judul}
             />
             <div className="text  w-full flex-1 flex justify-center items-center">
                 {display === 'start' && <Start setDisplay={setDisplay} />}
@@ -66,6 +69,13 @@ const Quiz = ()=> {
                         handlePrev={handlePrev}
                     />
                 ) }
+                {display === 'submitresult' &&
+                <SubmitResult
+                setDisplay={setDisplay}
+                score={score}
+                judul={judul}
+                />
+                }
             </div>
             <FooterQuiz
             display={display}
