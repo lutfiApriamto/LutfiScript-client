@@ -11,8 +11,10 @@ import ForgotPassword from './assets/Pages/ForgotPassword'
 import ResetPassword from './assets/Pages/ResetPassword';
 import Quiz from './assets/Quiz/MainQuiz';
 import MainAdmin from './assets/Admin/MainAdmin';
-import EditModule from './assets/Admin/PageAdmin.jsx/EditModule';
-import ViewUser from './assets/Admin/PageAdmin.jsx/ViewUser';
+import EditModule from './assets/Admin/PageAdmin/EditModule';
+import ViewUser from './assets/Admin/PageAdmin/ViewUser';
+import AdminLogin from './assets/Admin/PageAdmin/AdminLogin';
+import AdminRegister from './assets/Admin/PageAdmin/AdminRegister'
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
         <Route path="/lutfiscript/quiz" element={<Quiz />} />
 
         <Route path="/admin" element={<MainAdmin />} />
+        <Route path="/adminRegister" element={<AdminRegister />} />
+        <Route path="/adminLogin" element={<AdminLogin />} />
         <Route path="/admin/editmodule/:id" element={<EditModule />} />
         <Route path="/admin/viewuser/:id" element={<ViewUser />} />
       </Routes>

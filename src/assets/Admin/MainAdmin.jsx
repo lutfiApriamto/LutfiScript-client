@@ -1,9 +1,9 @@
 import Sidebar from "./ComponentAdmin/Sidebar"
-import Home from "./PageAdmin.jsx/Home"
-import DataUser from "./PageAdmin.jsx/DataUser"
-import AddModules from "./PageAdmin.jsx/AddModules"
-import FeedBack from "./PageAdmin.jsx/FeedBack"
-import ViewModules from "./PageAdmin.jsx/ViewModules"
+import Home from "./PageAdmin/Home"
+import DataUser from "./PageAdmin/DataUser"
+import AddModules from "./PageAdmin/AddModules"
+import FeedBack from "./PageAdmin/FeedBack"
+import ViewModules from "./PageAdmin/ViewModules"
 import { useState } from "react"
 
 const MainAdmin = () => {

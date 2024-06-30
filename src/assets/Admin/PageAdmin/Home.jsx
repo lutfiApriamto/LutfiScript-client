@@ -2,8 +2,23 @@ import { IoBook } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { MdLibraryAdd } from "react-icons/md";
 import { VscFeedback } from "react-icons/vsc";
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+    const navigate = useNavigate()
+
+    axios.defaults.withCredentials = true
+    const handleLogout = () => {
+    localStorage.removeItem("token")
+    axios.get('http://localhost:3000/admin/logout')
+    .then(res => {
+        if(res.data.status){
+        navigate('/adminLogin')
+        }
+    }).catch(err => console.log(err)) 
+    }
     return(
         <>
         <div className="p-4 w-full h-screen flex flex-col justify-center items-center gap-y-3">
@@ -42,7 +57,9 @@ const Home = () => {
             </div>
 
             <div>
-                <button className="bg-red-600 text-white py-1 hover:bg-red-800 transition duration-300 px-4 rounded font-bold italic cursor-pointer">Log Out</button>
+                <button 
+                onClick={handleLogout}
+                className="bg-red-600 text-white py-1 hover:bg-red-800 transition duration-300 px-4 rounded font-bold italic cursor-pointer">Log Out</button>
             </div>
         </div>
         </>
