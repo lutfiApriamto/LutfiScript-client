@@ -1,6 +1,7 @@
-const QuizCard = (props) => {
+import { Link } from "react-router-dom"
 
-    const {imageUrl, quiztitle} = props
+const QuizCard = (props) => {
+    const {imageUrl, quiztitle, desc, to} = props
 
     return (
         <>
@@ -19,12 +20,12 @@ const QuizCard = (props) => {
 
                 <div className="px-2 mt-5 sm:px-5 lg:px-10">
                 <p className="text-sm text-center sm:text-base md:text-lg lg:text-xl">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit cumque veritatis, eius, ex ducimus quam minima rem recusandae hic vitae sequi et quis fugit iusto repellendus aliquam voluptatum ipsa omnis atque! Assumenda voluptate id dolores est pariatur. Numquam voluptatem earum commodi maiores ab. Inventore, commodi quidem doloribus quod minus vero.
+                    {desc}
                 </p>
                 </div>
 
                 <div className="text-center mt-5">
-                <button className="bg-black py-2 px-4 text-white rounded-xl italic sm:px-8 sm:py-3 sm:text-lg md:text-xl md:mt-7">Play Now!</button>
+                <Link to={to} className="bg-black py-2 px-4 text-white rounded-xl italic sm:px-8 sm:py-3 sm:text-lg md:text-xl md:mt-7">Play Now!</Link>
                 </div>
                 </div>
         </>

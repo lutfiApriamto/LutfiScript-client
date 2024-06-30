@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const HomeQuizCard = (props) => {
 
-    const {Tittle} = props
+    const {Tittle, to} = props
 
     return (
         <>
@@ -13,7 +15,7 @@ const HomeQuizCard = (props) => {
                       <p className="font-thin italic md:text-xs md:mt-1 block lg:mt-4">{Tittle}</p>
                     </div>
                     <div>
-                      <button className="text-white bg-black py-2 px-4 rounded-xl text-sm italic">Play Now !</button>
+                      <Link to={to} className="text-white bg-black py-2 px-4 rounded-xl text-sm italic">Play Now !</Link>
                     </div>
                   </div>
                 </div>

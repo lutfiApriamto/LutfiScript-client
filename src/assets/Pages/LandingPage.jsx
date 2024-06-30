@@ -14,7 +14,6 @@ const LandingPage = () => {
 
   const cardDataJavascript = [
     {
-
       id: 1,
       cardTitle: "What Is JavaScript?",
       imageUrl: "../public/img/javascript1.jpg",
@@ -39,36 +38,15 @@ const LandingPage = () => {
   ];
 
   const cardDataAbout = [
-    {
-      id: 1,
-      title: "About us",
-      path: "/about-us",
-    },
-    {
-      id: 2,
-      title: "Features",
-      path: "/features",
-    },
-    {
-      id: 3,
-      title: "Benefits",
-      path: "/benefits",
-    }
+    { id: 1, title: "About us", path: "/about-us" },
+    { id: 2, title: "Features", path: "/features" },
+    { id: 3, title: "Benefits", path: "/benefits" }
   ];
 
   const Links = [
-    {
-      name: "Author",
-      link: "#author"
-    },
-    {
-      name: "About Us",
-      link: "#about"
-    },
-    {
-      name: "What Is Javascript",
-      link: "#what-is-javascript"
-    }
+    { name: "Author", link: "#author" },
+    { name: "About Us", link: "#about" },
+    { name: "What Is Javascript", link: "#what-is-javascript" }
   ];
 
   const toggleMenu = () => {
@@ -118,7 +96,7 @@ const LandingPage = () => {
             <ul className={`md:flex md:gap-x-7 md:static absolute bg-white bg-opacity-30 w-full left-0 top-12 md:top-0 md:bg-transparent ${isMenuOpen ? 'block' : 'hidden'} ${menuAnimation} md:flex-row flex-col md:items-center py-10 md:py-0`}>
               {Links.map((data) => (
                 <li key={data.name} className="text-center md:text-left">
-                  <a href={data.link} className="text-black hover:text-yellow-300 duration-500 transition sm:text-lg block py-2 md:py-0">{data.name}</a>
+                  <a href={data.link} className="text-white hover:text-yellow-300 duration-500 transition sm:text-lg block py-2 md:py-0 font-bold">{data.name}</a>
                 </li>
               ))}
               <div className='text-center md:text-start mt-7 md:mt-0'>
@@ -135,7 +113,7 @@ const LandingPage = () => {
 
         <div className="mt-2 sm:mt-4 lg:mt-5">
           <Link to="/login" className="bg-yellow-300 text-xs px-3 py-2 lg:px-5 md:px-4 md:py-3 md:text-base rounded-lg mr-7 md:mr-5 lg:mr-12 font-bold hover:bg-yellow-600 transition duration-700 italic">Getting Started</Link>
-          <button className="bg-white text-white bg-opacity-10 border border-white text-xs px-3 py-2 lg:px-5 md:px-4 md:py-3 md:text-base rounded-lg  font-bold hover:bg-black hover:bg-opacity-55 transition duration-700">Learn More</button>
+          <a href='#about'  className="bg-white text-white bg-opacity-10 border border-white text-xs px-3 py-2 lg:px-5 md:px-4 md:py-3 md:text-base rounded-lg  font-bold hover:bg-black hover:bg-opacity-55 transition duration-700">Learn More</a>
         </div>
       </section>
       {/* hero section end */}
