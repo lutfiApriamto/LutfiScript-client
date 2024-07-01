@@ -3,11 +3,22 @@ import { FaUser } from "react-icons/fa";
 import { MdLibraryAdd } from "react-icons/md";
 import { VscFeedback } from "react-icons/vsc";
 import axios from 'axios'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Home = () => {
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const getTokenAndDecode = async () => {
+          const token = await localStorage.getItem("token");
+          if (!token) {
+            navigate("/adminLogin")
+          } 
+        };
+        getTokenAndDecode();
+      }, [navigate]);
 
     axios.defaults.withCredentials = true
     const handleLogout = () => {

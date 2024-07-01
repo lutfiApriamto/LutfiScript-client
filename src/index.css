@@ -8,7 +8,6 @@
     }
   }
 
-/* Animasi untuk menu muncul */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -20,7 +19,6 @@
   }
 }
 
-/* Animasi untuk menu menghilang */
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -32,12 +30,10 @@
   }
 }
 
-/* Kelas untuk animasi muncul */
 .menu-enter {
   animation: fadeIn 0.5s forwards;
 }
 
-/* Kelas untuk animasi menghilang */
 .menu-exit {
   animation: fadeOut 0.5s forwards;
 }

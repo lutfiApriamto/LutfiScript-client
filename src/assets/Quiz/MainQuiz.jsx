@@ -7,9 +7,7 @@ import Review from "./QuizPage/Review"
 import SubmitResult from "./QuizPage/SubmitResult"
 import { useState } from "react"
 
-
 const Quiz = ()=> {
-
     const [display, setDisplay] = useState('start')
     const [score, setScore] = useState(0)
     const [index, setIndex] = useState(0)
@@ -71,9 +69,9 @@ const Quiz = ()=> {
                 ) }
                 {display === 'submitresult' &&
                 <SubmitResult
-                setDisplay={setDisplay}
-                score={score}
-                judul={judul}
+                    setDisplay={setDisplay}
+                    score={score}
+                    judul={judul}
                 />
                 }
             </div>

@@ -14,27 +14,15 @@ const LandingPage = () => {
 
   const cardDataJavascript = [
     {
-      id: 1,
-      cardTitle: "What Is JavaScript?",
-      imageUrl: "../public/img/javascript1.jpg",
-      description: `JavaScript (disingkat JS) adalah suatu bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian besar penjelajah web populer seperti Google Chrome, Internet Explorer (IE), Mozilla Firefox, Netscape dan Opera. Kode JavaScript dapat disisipkan dalam halaman web menggunakan tag script.[11] JavaScript merupakan salah satu teknologi inti World Wide Web selain HTML dan CSS. JavaScript membantu membuat halaman web interaktif dan merupakan bagian aplikasi web yang esensial...
-`,
-      url: "https://id.wikipedia.org/wiki/JavaScript",
-    },
-    {
-      id: 2,
-      cardTitle: "Javascript Historys",
-      imageUrl: "../public/img/javascript2.jpg",
+      id: 1, cardTitle: "What Is JavaScript?", imageUrl: "../public/img/javascript1.jpg",
+      description: `JavaScript (disingkat JS) adalah suatu bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian besar penjelajah web populer seperti Google Chrome, Internet Explorer (IE), Mozilla Firefox, Netscape dan Opera. Kode JavaScript dapat disisipkan dalam halaman web menggunakan tag script.[11] JavaScript merupakan salah satu teknologi inti World Wide Web selain HTML dan CSS. JavaScript membantu membuat halaman web interaktif dan merupakan bagian aplikasi web yang esensial...`,
+      url: "https://id.wikipedia.org/wiki/JavaScript",},
+    { id: 2, cardTitle: "Javascript Historys", imageUrl: "../public/img/javascript2.jpg",
       description: `Sejarah sebuah teknologi selalu menarik untuk diikuti, mulai dari berdirinya sebuah perusahaan, pengembangan berbagai fitur, munculnya pesaing, trik bisnis yang digunakan, hingga kemunduran perusahaan tersebut. Jika berbicara tentang JavaScript, perusahaan yang dimaksud adalah Netscape Communications. Disinilah JavaScript "lahir" ... `,
-      url: "https://www.duniailkom.com/tutorial-belajar-javascript-sejarah-dan-perkembangan-versi-javascript/"
-    },
-    {
-      id: 3,
-      cardTitle: "Benefit Javasript",
-      imageUrl: "../public/img/javascript3.jpg",
+      url: "https://www.duniailkom.com/tutorial-belajar-javascript-sejarah-dan-perkembangan-versi-javascript/"},
+    { id: 3, cardTitle: "Benefit Javasript",imageUrl: "../public/img/javascript3.jpg",
       description: `Saat ini, belajar JavaScript memiliki banyak manfaat. Salah satunya karena JavaScript sendiri digunakan oleh berbagai website penelusur besar seperti Internet Explorer, Netscape, hingga Opera. Selain itu, perusahaan-perusahaan besar seperti Microsoft, Amazon, dan PayPal juga menggunakan jasa dari JavaScript. Lalu, apa saja alasan selanjutnya mengapa banyak perusahaan menggunakan bahasa pemrograman JavaScript dan belajar JavaScript bermanfaat untuk berkarir di bidang teknologi? Berikut alasannya...`,
-      url: "https://glints.com/id/lowongan/manfaat-belajar-javascript/"
-    }
+      url: "https://glints.com/id/lowongan/manfaat-belajar-javascript/"}
   ];
 
   const cardDataAbout = [

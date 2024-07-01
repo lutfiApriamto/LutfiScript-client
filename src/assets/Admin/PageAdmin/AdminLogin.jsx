@@ -22,9 +22,9 @@ const AdminLogin = () => {
         })
         .catch(err => {
             if (err.response && err.response.data.message) {
-                alert(err.response.data.message); // Menampilkan pesan error dari server
+                alert(err.response.data.message);
             } else {
-                alert("Terjadi kesalahan saat login"); // Pesan default jika tidak ada pesan dari server
+                alert("Terjadi kesalahan saat login"); 
             }
             console.log(err)
         })
@@ -59,7 +59,7 @@ const AdminLogin = () => {
                     type="submit"
                         className="bg-black w-full rounded text-center italic text-white py-1 mt-10 lg:py-2 lg:text-xl"
                     >
-                        Register
+                        Login
                     </button>
             </form>
         </section>

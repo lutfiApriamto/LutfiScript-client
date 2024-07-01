@@ -15,6 +15,7 @@ import EditModule from './assets/Admin/PageAdmin/EditModule';
 import ViewUser from './assets/Admin/PageAdmin/ViewUser';
 import AdminLogin from './assets/Admin/PageAdmin/AdminLogin';
 import AdminRegister from './assets/Admin/PageAdmin/AdminRegister'
+import ViewComent from './assets/Admin/PageAdmin/ViewComent';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/adminLogin" element={<AdminLogin />} />
         <Route path="/admin/editmodule/:id" element={<EditModule />} />
         <Route path="/admin/viewuser/:id" element={<ViewUser />} />
+        <Route path="/admin/viewcoment/:id" element={<ViewComent />} />
       </Routes>
     </BrowserRouter>
   );

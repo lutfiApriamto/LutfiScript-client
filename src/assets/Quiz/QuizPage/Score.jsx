@@ -1,10 +1,8 @@
 const Score = ({setDisplay, score, setIndex})=> {
-
     const handleClick = () => {
 		setDisplay('review');
 		setIndex(0);
 	};
-
     return (
         <>
         <div className="w-full flex flex-col gap-y-8 justify-center items-center">
@@ -33,7 +31,6 @@ const Score = ({setDisplay, score, setIndex})=> {
                 </button>
             </div>
         </div>
-            
         </>
     )
 }

@@ -2,7 +2,6 @@ import { questions } from "../data/data"
 import { FaArrowAltCircleLeft,FaArrowAltCircleRight } from "react-icons/fa";
 
 const Question = ({setDisplay, setScore, index, answer, handleNext, handlePrev, setAnswer}) => {
-
 	const handleAns = (key, num) => {
 		setAnswer({...answer, [num]:key})
 	}
@@ -41,12 +40,6 @@ const Question = ({setDisplay, setScore, index, answer, handleNext, handlePrev, 
                         </div>
                     )
                 })}
-
-                {/* <div 
-                    className="px-2 py-3 rounded w-full bg-yellow-300 hover:bg-yellow-500 md:px-5 md:py-3">
-                        <p className="font-semibold capitalize text-lg md:text-xl">A front-end JavaScript library </p>
-                </div> */}
-                
             </div>
             <div className="w-full py-2 px-8  flex justify-between md:w-3/4 lg:w-1/2">
                     {index !== 0 && 
