@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import ButtonAbout from "../Component/ButtonAbout"
-import LandingCard from "../Component/LandingCard"
-import Footer from "../Component/Footer"
+import ButtonAbout from "../Component/ButtonAbout";
+import LandingCard from "../Component/LandingCard";
+import Footer from "../Component/Footer";
 import Sosmed from '../Component/Sosmed';
 import Modal from '../Layout/Modal';
 
@@ -11,18 +11,24 @@ const LandingPage = () => {
   const [menuAnimation, setMenuAnimation] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [modalAnimation, setModalAnimation] = useState("");
 
   const cardDataJavascript = [
     {
       id: 1, cardTitle: "What Is JavaScript?", imageUrl: "../public/img/javascript1.jpg",
       description: `JavaScript (disingkat JS) adalah suatu bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian besar penjelajah web populer seperti Google Chrome, Internet Explorer (IE), Mozilla Firefox, Netscape dan Opera. Kode JavaScript dapat disisipkan dalam halaman web menggunakan tag script.[11] JavaScript merupakan salah satu teknologi inti World Wide Web selain HTML dan CSS. JavaScript membantu membuat halaman web interaktif dan merupakan bagian aplikasi web yang esensial...`,
-      url: "https://id.wikipedia.org/wiki/JavaScript",},
-    { id: 2, cardTitle: "Javascript Historys", imageUrl: "../public/img/javascript2.jpg",
+      url: "https://id.wikipedia.org/wiki/JavaScript"
+    },
+    {
+      id: 2, cardTitle: "Javascript Historys", imageUrl: "../public/img/javascript2.jpg",
       description: `Sejarah sebuah teknologi selalu menarik untuk diikuti, mulai dari berdirinya sebuah perusahaan, pengembangan berbagai fitur, munculnya pesaing, trik bisnis yang digunakan, hingga kemunduran perusahaan tersebut. Jika berbicara tentang JavaScript, perusahaan yang dimaksud adalah Netscape Communications. Disinilah JavaScript "lahir" ... `,
-      url: "https://www.duniailkom.com/tutorial-belajar-javascript-sejarah-dan-perkembangan-versi-javascript/"},
-    { id: 3, cardTitle: "Benefit Javasript",imageUrl: "../public/img/javascript3.jpg",
+      url: "https://www.duniailkom.com/tutorial-belajar-javascript-sejarah-dan-perkembangan-versi-javascript/"
+    },
+    {
+      id: 3, cardTitle: "Benefit Javasript", imageUrl: "../public/img/javascript3.jpg",
       description: `Saat ini, belajar JavaScript memiliki banyak manfaat. Salah satunya karena JavaScript sendiri digunakan oleh berbagai website penelusur besar seperti Internet Explorer, Netscape, hingga Opera. Selain itu, perusahaan-perusahaan besar seperti Microsoft, Amazon, dan PayPal juga menggunakan jasa dari JavaScript. Lalu, apa saja alasan selanjutnya mengapa banyak perusahaan menggunakan bahasa pemrograman JavaScript dan belajar JavaScript bermanfaat untuk berkarir di bidang teknologi? Berikut alasannya...`,
-      url: "https://glints.com/id/lowongan/manfaat-belajar-javascript/"}
+      url: "https://glints.com/id/lowongan/manfaat-belajar-javascript/"
+    }
   ];
 
   const cardDataAbout = [
@@ -52,12 +58,23 @@ const LandingPage = () => {
 
   const openModal = (card) => {
     setSelectedCard(card);
+    setModalAnimation("modal-enter");
     setModalOpen(true);
+    setTimeout(() => {
+      setModalAnimation("modal-enter-active");
+    }, 10); // Trigger reflow for animation
   };
 
   const closeModal = () => {
-    setModalOpen(false);
-    setSelectedCard(null);
+    setModalAnimation("modal-exit");
+    setTimeout(() => {
+      setModalAnimation("modal-exit-active");
+      setTimeout(() => {
+        setModalOpen(false);
+        setSelectedCard(null);
+        setModalAnimation("");
+      }, 300); // Duration should match the animation duration
+    }, 10); // Trigger reflow for animation
   };
 
   return (
@@ -88,7 +105,7 @@ const LandingPage = () => {
                 </li>
               ))}
               <div className='text-center md:text-start mt-7 md:mt-0'>
-                <Link to="/login"  className="bg-yellow-300 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">Getting Started</Link>
+                <Link to="/login" className="bg-yellow-300 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">Getting Started</Link>
               </div>
             </ul>
           </div>
@@ -101,7 +118,7 @@ const LandingPage = () => {
 
         <div className="mt-2 sm:mt-4 lg:mt-5">
           <Link to="/login" className="bg-yellow-300 text-xs px-3 py-2 lg:px-5 md:px-4 md:py-3 md:text-base rounded-lg mr-7 md:mr-5 lg:mr-12 font-bold hover:bg-yellow-600 transition duration-700 italic">Getting Started</Link>
-          <a href='#about'  className="bg-white text-white bg-opacity-10 border border-white text-xs px-3 py-2 lg:px-5 md:px-4 md:py-3 md:text-base rounded-lg  font-bold hover:bg-black hover:bg-opacity-55 transition duration-700">Learn More</a>
+          <a href='#about' className="bg-white text-white bg-opacity-10 border border-white text-xs px-3 py-2 lg:px-5 md:px-4 md:py-3 md:text-base rounded-lg  font-bold hover:bg-black hover:bg-opacity-55 transition duration-700">Learn More</a>
         </div>
       </section>
       {/* hero section end */}
@@ -170,10 +187,11 @@ const LandingPage = () => {
         <Modal
           card={selectedCard}
           onClose={closeModal}
+          animationClass={modalAnimation}
         />
       )}
     </>
   );
-}
+};
 
 export default LandingPage;

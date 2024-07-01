@@ -17,7 +17,10 @@ const MainAdmin = () => {
                 setDisplay={setDisplay}
             />
             <div className="relative w-full">
-            {display === 'home' && <Home/>}
+            {display === 'home' && 
+                <Home
+                setDisplay={setDisplay}
+                />}
             {display === 'datauser' && <DataUser/>}
             {display === 'addmodules' && 
             <AddModules

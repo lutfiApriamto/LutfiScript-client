@@ -15,12 +15,10 @@ const LutfiScriptPage = () => {
   
   useEffect(() => {
     const getTokenAndDecode = async () => {
-      const token = await localStorage.getItem("token");
-      if (token) {
+      const username = await localStorage.getItem("username")
+      if (username) {
         try {
-          const decoded = jwtDecode(token);
-          setUsername(decoded); 
-          console.log(decoded);
+          setUsername(username); 
         } catch (error) {
           console.error("Invalid token");
         }
@@ -34,6 +32,7 @@ const LutfiScriptPage = () => {
   axios.defaults.withCredentials = true
   const handleLogout = () => {
     localStorage.removeItem("token")
+    localStorage.removeItem("username")
     axios.get('http://localhost:3000/auth/logout')
     .then(res => {
       if(res.data.status){
@@ -68,7 +67,7 @@ const LutfiScriptPage = () => {
     <>
     <header className="py-5 w-full bg-white bg-opacity-10 fixed top-0 z-10 backdrop-blur-md">
       <nav className="lg:px-5 md:px-5 flex justify-between items-center px-3 relative">
-        <h1 className="text-2xl font-black text-yellow-300 italic">{username.username}</h1>
+        <h1 className="text-2xl font-black text-yellow-300 italic">{username}</h1>
 
           <div>
             <div className="md:hidden absolute top-1 right-4" onClick={toggleMenu}>

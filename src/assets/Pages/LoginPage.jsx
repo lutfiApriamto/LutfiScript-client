@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const LoginPage = () => {
   const [email, setEmail] = useState();
@@ -13,8 +14,8 @@ const LoginPage = () => {
     e.preventDefault();
     axios.post('http://localhost:3000/auth/login', { email, password,})
     .then(response => {
-        console.log(response);
-        localStorage.setItem("token", response.data.token)
+        const username = jwtDecode(response.data.token)
+        localStorage.setItem("username", username.username)
         alert("Berhasil Login");
         navigate('/lutfiscript');
     }).catch(err => {
