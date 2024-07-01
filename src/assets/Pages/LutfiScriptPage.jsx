@@ -4,29 +4,31 @@ import HomePage from "../Layout/HomePage";
 import ModulesPage from "../Layout/ModulesPage";
 import GamePage from "../Layout/GamePage";
 import axios from 'axios'
-import { jwtDecode } from "jwt-decode";
 
 const LutfiScriptPage = () => {
   const [currentPage, setCurrentPage] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuAnimation, setMenuAnimation] = useState("");
   const [username, setUsername] = useState("");
+  const [userId, setUserId] = useState("");
   const navigate = useNavigate()
   
   useEffect(() => {
-    const getTokenAndDecode = async () => {
-      const username = await localStorage.getItem("username")
+    const fetchUserData = async () => {
+      const username = await localStorage.getItem("username");
       if (username) {
         try {
-          setUsername(username); 
+          setUsername(username);
+          const response = await axios.get(`http://localhost:3000/auth/getUserByUsername?username=${username}`);
+          setUserId(response.data._id)
         } catch (error) {
-          console.error("Invalid token");
+          console.error("Error fetching user data", error);
         }
       } else {
         navigate('/');
       }
     };
-    getTokenAndDecode();
+    fetchUserData();
   }, [navigate]);
 
   axios.defaults.withCredentials = true
@@ -67,7 +69,7 @@ const LutfiScriptPage = () => {
     <>
     <header className="py-5 w-full bg-white bg-opacity-10 fixed top-0 z-10 backdrop-blur-md">
       <nav className="lg:px-5 md:px-5 flex justify-between items-center px-3 relative">
-        <h1 className="text-2xl font-black text-yellow-300 italic">{username}</h1>
+        <Link to={`/lutfiscript/profile/${userId}`} className="text-2xl font-black text-yellow-300 italic">{username}</Link>
 
           <div>
             <div className="md:hidden absolute top-1 right-4" onClick={toggleMenu}>

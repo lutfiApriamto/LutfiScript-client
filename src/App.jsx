@@ -16,6 +16,7 @@ import ViewUser from './assets/Admin/PageAdmin/ViewUser';
 import AdminLogin from './assets/Admin/PageAdmin/AdminLogin';
 import AdminRegister from './assets/Admin/PageAdmin/AdminRegister'
 import ViewComent from './assets/Admin/PageAdmin/ViewComent';
+import ProfilePage from './assets/Pages/ProfilePage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         {/* tidak bisa di akses sebelum login dengan akun yang benar */}
         <Route path="/lutfiscript" element={<LutfiScriptPage />} />
         <Route path="/lutfiscript/materi/:id" element={<MateriPage />} />
+        <Route path="/lutfiscript/profile/:id" element={<ProfilePage />} />
         <Route path="/lutfiscript/quiz" element={<Quiz />} />
 
         <Route path="/admin" element={<MainAdmin />} />
