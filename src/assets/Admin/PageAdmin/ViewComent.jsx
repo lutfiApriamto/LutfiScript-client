@@ -13,7 +13,7 @@ const ViewComent = () => {
     },[])
 
     const getUserByID = async () => {
-        const response = await axios.get(`http://localhost:3000/auth/${id}/getUserByID`)
+        const response = await axios.get(`https://lutfiscript-api.vercel.app/auth/${id}/getUserByID`)
         setUsername(response.data.username);
         setSugestions(response.data.suggestions)
     }

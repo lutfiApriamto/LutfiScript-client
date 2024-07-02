@@ -17,7 +17,7 @@ const HomePage = () => {
   },[])
 
   const getModules = async () => {
-      const response = await axios.get("http://localhost:3000/modules/getModules")
+      const response = await axios.get("https://lutfiscript-api.vercel.app/modules/getModules")
       setModule(response.data);
   }
 

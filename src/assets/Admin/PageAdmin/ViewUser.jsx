@@ -15,7 +15,7 @@ const ViewUser = () => {
     },[])
 
     const getUserByID = async () => {
-        const response = await axios.get(`http://localhost:3000/auth/${id}/getUserByID`)
+        const response = await axios.get(`https://lutfiscript-api.vercel.app/auth/${id}/getUserByID`)
         setEmail(response.data.email)
         setUsername(response.data.username)
         setPassword(response.data.password)

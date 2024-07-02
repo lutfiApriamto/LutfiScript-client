@@ -11,7 +11,7 @@ const RegisterPage = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      axios.post('http://localhost:3000/auth/register', { email, username, password })
+      axios.post('https://lutfiscript-api.vercel.app/auth/register', { email, username, password })
           .then(response => {
               console.log(response);
               alert("Data berhasil ditambahkan");

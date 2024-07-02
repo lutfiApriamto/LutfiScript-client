@@ -9,7 +9,7 @@ const ResetPassword = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/auth/resetpassword', { password, token })
+        axios.post('https://lutfiscript-api.vercel.app/auth/resetpassword', { password, token })
             .then(response => {
                 console.log(response);
                 alert("password berhasil di ubah");

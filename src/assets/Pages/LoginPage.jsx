@@ -12,7 +12,7 @@ const LoginPage = () => {
   axios.defaults.withCredentials = true
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/auth/login', { email, password,})
+    axios.post('https://lutfiscript-api.vercel.app/auth/login', { email, password,})
     .then(response => {
         const username = jwtDecode(response.data.token)
         localStorage.setItem("username", username.username)

@@ -12,7 +12,7 @@ const FeedBack = () => {
 
     const getUser = async () => {
         try {
-        const response = await axios.get("http://localhost:3000/auth/getUsers")
+        const response = await axios.get("https://lutfiscript-api.vercel.app/auth/getUsers")
         setUser(response.data)
         } catch (error) {
             console.log(error)
