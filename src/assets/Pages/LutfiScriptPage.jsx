@@ -92,7 +92,7 @@ const LutfiScriptPage = () => {
               } ${menuAnimation}  md:flex-row flex-col md:items-center py-10 md:py-0`}
             >
               {Links.map((data) => (
-                <li key={data.name} className={` flex justify-center w-full ${ currentPage === data.name ? "text-yellow-300" : "text-black"}`}>
+                <li key={data.name} className={` flex justify-center w-full ${ currentPage === data.name ? "text-yellow-300" : "text-white font-bold"}`}>
                   <button onClick={() => handlePageChange(data.name)} className="hover:text-yellow-300 duration-500 transition sm:text-lg block  py-2 md:py-0 focus:outline-none">
                     {data.name}
                   </button>

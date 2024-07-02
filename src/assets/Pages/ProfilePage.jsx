@@ -27,9 +27,9 @@ const ProfilePage = () => {
         username,
       });
       alert('Username telah di ubah');
-      localStorage.setItem("username", username); // Perbarui local storage dengan username baru
+      localStorage.setItem("username", username);
       getUserByID();
-      navigate('/lutfiscript'); // Navigasi ke LutfiScriptPage untuk merefleksikan perubahan
+      navigate('/lutfiscript');
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +55,7 @@ const ProfilePage = () => {
       {quiz.length === 0 ? (
   <div className="p-4 w-5/6 md:p-8 md:w-3/4 text-center flex flex-col lg:w-1/2 items-center border-2 border-slate-800 rounded shadow-xl">
     <p className="text-center font-semibold mb-3 text-lg md:text-xl">Anda belum mengikuti Quiz Apapun, ingin Mencobanya?</p>
-    <Link className="font-bold text-sm italic bg-black rounded px-3 py-1 text-white md:text-lg md:px-5 md:py-2">Play Quiz</Link>
+    <Link to='/lutfiscript/game' className="font-bold text-sm italic bg-black rounded px-3 py-1 text-white md:text-lg md:px-5 md:py-2">Play Quiz</Link>
   </div> 
 ) : (
   quiz.map(data => (

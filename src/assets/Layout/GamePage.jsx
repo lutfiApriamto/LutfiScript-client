@@ -7,9 +7,6 @@ const GamePage = () => {
         { id : 1, quiztitle : "Pengenalan Javascript", imageUrl : "../public/img/quiz1.jpg", link : "/lutfiscript/quiz" ,
           desc : "halo sobat LutfiScript pada Quiz kali ini anda akan dihadapkan dengan terdapat beberapa soal pilihan ganda mengenai pengenalan javascript. yuk uji pemahaman kamu dengan klik tombol PLAY NOW dibawah "
         },
-        {id : 2, quiztitle : "Fundamental Javascript", imageUrl : "../public/img/quiz2.jpg", link : "/lutfiscript/quiz",
-          desc : "halo sobat LutfiScript pada Quiz kali ini anda akan dihadapkan dengan terdapat beberapa soal pilihan ganda mengenai Fundamental Javascript. yuk uji pemahaman kamu dengan klik tombol PLAY NOW dibawah "
-        },
       ]
 
     return (

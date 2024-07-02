@@ -9,7 +9,7 @@ import axios from "axios";
 
 const HomePage = () => {
 
-  const dataQuiz = [{id : 1, quizname : "pengenalan javascript", link: "/lutfiscript/quiz"},{id : 2, quizname : "sejarah javascript", link: "/lutfiscript/quiz"}]
+  const dataQuiz = [{id : 1, quizname : "pengenalan javascript", link: "/lutfiscript/quiz"},{id : 2, quizname : "pengenalan javascript", link: "/lutfiscript/quiz"}]
   const [module, setModule] = useState([])
 
   useEffect (() => {

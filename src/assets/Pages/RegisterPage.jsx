@@ -11,20 +11,32 @@ const RegisterPage = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      axios.post('http://localhost:3000/auth/register', { email, username, password,})
-      .then(response => {
-          console.log(response);
-          alert("Data berhasil ditambahkan");
-          navigate('/login');
-      }).catch(err => {
-          if (err.response && err.response.status === 400) {
-              alert(err.response.data.message);
-          } else {
-              alert("Terjadi kesalahan saat mendaftar"); 
-          }
-          navigate('/register')
-      });
+      axios.post('http://localhost:3000/auth/register', { email, username, password })
+          .then(response => {
+              console.log(response);
+              alert("Data berhasil ditambahkan");
+              navigate('/login');
+          }).catch(err => {
+              if (err.response) {
+                  const errorMessage = err.response.data.message;
+                  if (err.response.status === 400) {
+                      if (errorMessage === "Email already exists") {
+                          alert("Email sudah digunakan");
+                      } else if (errorMessage === "Username already exists") {
+                          alert("Username sudah digunakan");
+                      } else {
+                          alert(errorMessage);
+                      }
+                  } else {
+                      alert("Terjadi kesalahan saat mendaftar");
+                  }
+              } else {
+                  alert("Terjadi kesalahan saat mendaftar");
+              }
+              navigate('/register');
+          });
   }
+  
 
   return (
     <>

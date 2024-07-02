@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react';
 
-const SubmitResult = ({ score, judul}) => {
+const SubmitResult = ({ score, judul,setDisplay}) => {
     const [email, setEmail] = useState("")
     let percobaan = 0;
 
@@ -12,6 +12,7 @@ const SubmitResult = ({ score, judul}) => {
                 percobaan ,email , score: score.score, quizname:judul
             })
             alert('hasil tersimpan')
+            setDisplay('start')
         } catch (error) {
             alert(error)
         }

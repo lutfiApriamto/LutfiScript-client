@@ -17,6 +17,7 @@ import AdminLogin from './assets/Admin/PageAdmin/AdminLogin';
 import AdminRegister from './assets/Admin/PageAdmin/AdminRegister'
 import ViewComent from './assets/Admin/PageAdmin/ViewComent';
 import ProfilePage from './assets/Pages/ProfilePage';
+import GamePage from './assets/Layout/GamePage';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
         <Route path="/lutfiscript/materi/:id" element={<MateriPage />} />
         <Route path="/lutfiscript/profile/:id" element={<ProfilePage />} />
         <Route path="/lutfiscript/quiz" element={<Quiz />} />
+        <Route path="/lutfiscript/game" element={<GamePage />} />
+
 
         <Route path="/admin" element={<MainAdmin />} />
         <Route path="/adminRegister" element={<AdminRegister />} />
