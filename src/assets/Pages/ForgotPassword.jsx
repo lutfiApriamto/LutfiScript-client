@@ -32,7 +32,7 @@ const ForgotPassword = () => {
         <section
             id="login"
             className="w-full h-[100vh] flex items-center justify-center bg-cover bg-top bg-no-repeat bg-fixed"
-            style={{ backgroundImage: "url('../public/img/login.jpg')" }}
+            style={{ backgroundImage: "url('/img/login.jpg')" }}
         >
             <Link
                 to="/"

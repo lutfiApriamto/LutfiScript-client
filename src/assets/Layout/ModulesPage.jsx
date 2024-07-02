@@ -18,7 +18,7 @@ const ModulesPage = () => {
     return (
         <>
             {/* hero serction start */}
-      <section id="hero" className="w-full h-[100vh] sm:py-10 flex items-center justify-center bg-cover bg-center bg-no-repeat bg-fixed " style={{ backgroundImage: "url('../public/img/modul-page.jpg')"}}>
+      <section id="hero" className="w-full h-[100vh] sm:py-10 flex items-center justify-center bg-cover bg-center bg-no-repeat bg-fixed " style={{ backgroundImage: "url('/img/modul-page.jpg')"}}>
         <div className="w-full flex flex-col justify-center items-center">
           <iframe 
           src="https://www.youtube.com/embed/qKJP93dWn40?si=CQIoSX2Vsa33QIMM"

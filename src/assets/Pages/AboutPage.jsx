@@ -7,7 +7,7 @@ const AboutPage = () => {
         <>
         <HeroLanding
         title="About Us"
-        imageUrl="../public/img/about-page.jpg"
+        imageUrl="/img/about-page.jpg"
         />
         <ContentAboutPage/>
         <Footer/>

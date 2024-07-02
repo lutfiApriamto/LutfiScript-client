@@ -7,7 +7,7 @@ const BenefitsPage = () => {
         <>
         <HeroLanding
         title="Benefits"
-        imageUrl="../public/img/benefits-page.jpg"
+        imageUrl="/img/benefits-page.jpg"
         />
         <ContentBenefitsPage/>
         <Footer/>
