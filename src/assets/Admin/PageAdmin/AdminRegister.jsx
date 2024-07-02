@@ -10,7 +10,7 @@ const AdminRegister = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('https://lutfiscript-api.vercel.app/admin/registerAdmin', {
+        axios.post('https://lutfiscript-api.vercel.app/api/admin/registerAdmin', {
             username, password
         })
         .then(response => {

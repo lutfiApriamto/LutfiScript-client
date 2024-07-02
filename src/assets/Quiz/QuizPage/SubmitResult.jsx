@@ -8,7 +8,7 @@ const SubmitResult = ({ score, judul,setDisplay}) => {
     const handleSubmit = async  (event) => {
         event.preventDefault();
         try {
-            await axios.post("https://lutfiscript-api.vercel.app/auth/submitresult", {
+            await axios.post("https://lutfiscript-api.vercel.app/api/auth/submitresult", {
                 percobaan ,email , score: score.score, quizname:judul
             })
             alert('hasil tersimpan')

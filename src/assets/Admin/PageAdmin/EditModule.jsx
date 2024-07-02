@@ -16,7 +16,7 @@ const EditModule = () => {
     },[])
 
     const getModuleByID = async () => {
-        const response = await axios.get(`https://lutfiscript-api.vercel.app/modules/${id}/getModulesByID`)
+        const response = await axios.get(`https://lutfiscript-api.vercel.app/api/modules/${id}/getModulesByID`)
         setJudul(response.data.judul)
         setLink(response.data.link)
         setDesc(response.data.desc)
@@ -25,7 +25,7 @@ const EditModule = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.patch(`https://lutfiscript-api.vercel.app/modules/${id}/updateModule`,{
+            await axios.patch(`https://lutfiscript-api.vercel.app/api/modules/${id}/updateModule`,{
                 judul, link, desc
             })
             alert('Module telah terupdate')

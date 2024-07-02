@@ -11,7 +11,7 @@ const AddModules = ({setDisplay}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("https://lutfiscript-api.vercel.app/modules/addModules",{
+            await axios.post("https://lutfiscript-api.vercel.app/api/modules/addModules",{
                 judul, link, desc
             })
             alert('module berhasil di tambahkan')

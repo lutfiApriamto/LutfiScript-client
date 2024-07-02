@@ -14,7 +14,7 @@ const ProfilePage = () => {
   }, []);
 
   const getUserByID = async () => {
-    const response = await axios.get(`https://lutfiscript-api.vercel.app/auth/${id}/getUserByID`);
+    const response = await axios.get(`https://lutfiscript-api.vercel.app/api/auth/${id}/getUserByID`);
     setUsername(response.data.username);
     setEmail(response.data.email);
     setQuiz(response.data.quiz)
@@ -23,7 +23,7 @@ const ProfilePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://lutfiscript-api.vercel.app/auth/${id}/updateUser`, {
+      await axios.patch(`https://lutfiscript-api.vercel.app/api/auth/${id}/updateUser`, {
         username,
       });
       alert('Username telah di ubah');

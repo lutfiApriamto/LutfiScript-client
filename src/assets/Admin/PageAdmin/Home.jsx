@@ -23,7 +23,7 @@ const Home = ({setDisplay}) => {
     axios.defaults.withCredentials = true
     const handleLogout = () => {
     localStorage.removeItem("token")
-    axios.get('https://lutfiscript-api.vercel.app/admin/logout')
+    axios.get('https://lutfiscript-api.vercel.app/api/admin/logout')
     .then(res => {
         if(res.data.status){
         navigate('/adminLogin')

@@ -11,7 +11,7 @@ const AdminLogin = () => {
     axios.defaults.withCredentials = true
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('https://lutfiscript-api.vercel.app/admin/loginAdmin', {
+        axios.post('https://lutfiscript-api.vercel.app/api/admin/loginAdmin', {
             username, password
         })
         .then(response => {

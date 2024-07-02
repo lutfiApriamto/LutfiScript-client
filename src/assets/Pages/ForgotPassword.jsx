@@ -10,7 +10,7 @@ const ForgotPassword = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('https://lutfiscript-api.vercel.app/auth/forgotpassword', { email })
+        axios.post('https://lutfiscript-api.vercel.app/api/auth/forgotpassword', { email })
             .then(response => {
                 console.log(response);
                 alert("Password reset link has been sent to your email");

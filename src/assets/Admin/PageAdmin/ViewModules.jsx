@@ -15,13 +15,13 @@ const ViewModules = () => {
 
 
     const getModules = async () => {
-        const response = await axios.get("https://lutfiscript-api.vercel.app/modules/getModules")
+        const response = await axios.get("https://lutfiscript-api.vercel.app/api/modules/getModules")
         setModule(response.data);
     }
 
     const deletModule = async (id) => {
         try {
-            await axios.delete(`https://lutfiscript-api.vercel.app/modules/${id}/deleteModule`)
+            await axios.delete(`https://lutfiscript-api.vercel.app/api/modules/${id}/deleteModule`)
             getModules();
         } catch (error) {
             console.log(error)

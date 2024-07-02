@@ -17,7 +17,7 @@ const MateriPage = () => {
   },[])
 
   const getModuleByID = async () => {
-    const response = await axios.get(`https://lutfiscript-api.vercel.app/modules/${id}/getModulesByID`)
+    const response = await axios.get(`https://lutfiscript-api.vercel.app/api/modules/${id}/getModulesByID`)
     setJudul(response.data.judul)
     setLink(response.data.link)
     setDesc(response.data.desc)
@@ -30,7 +30,7 @@ const MateriPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); 
     try {
-      await axios.post("https://lutfiscript-api.vercel.app/auth/suggestion", {
+      await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion", {
         email, modulename: judul, suggestion
       });
       alert('komentar berhasil di upload');

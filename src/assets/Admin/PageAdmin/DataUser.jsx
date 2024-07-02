@@ -15,7 +15,7 @@ const DataUser = () => {
 
     const deleteUser = async (id) => {
         try {
-            await axios.delete(`https://lutfiscript-api.vercel.app/auth/${id}/deleteUser`)
+            await axios.delete(`https://lutfiscript-api.vercel.app/api/auth/${id}/deleteUser`)
             alert('Berhasil Menghapus User')
             getUser()
         } catch (error) {
@@ -25,7 +25,7 @@ const DataUser = () => {
 
     const getUser = async () => {
         try {
-        const response = await axios.get("https://lutfiscript-api.vercel.app/auth/getUsers")
+        const response = await axios.get("https://lutfiscript-api.vercel.app/api/auth/getUsers")
         setUser(response.data)
         } catch (error) {
             console.log(error)

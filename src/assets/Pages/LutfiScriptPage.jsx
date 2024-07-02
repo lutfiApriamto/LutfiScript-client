@@ -19,7 +19,7 @@ const LutfiScriptPage = () => {
       if (username) {
         try {
           setUsername(username);
-          const response = await axios.get(`https://lutfiscript-api.vercel.app/auth/getUserByUsername?username=${username}`);
+          const response = await axios.get(`https://lutfiscript-api.vercel.app/api/auth/getUserByUsername?username=${username}`);
           setUserId(response.data._id)
         } catch (error) {
           console.error("Error fetching user data", error);
@@ -35,7 +35,7 @@ const LutfiScriptPage = () => {
   const handleLogout = () => {
     localStorage.removeItem("token")
     localStorage.removeItem("username")
-    axios.get('https://lutfiscript-api.vercel.app/auth/logout')
+    axios.get('https://lutfiscript-api.vercel.app/api/auth/logout')
     .then(res => {
       if(res.data.status){
         navigate('/')
