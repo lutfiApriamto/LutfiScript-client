@@ -15,17 +15,17 @@ const LandingPage = () => {
 
   const cardDataJavascript = [
     {
-      id: 1, cardTitle: "What Is JavaScript?", imageUrl: "../public/img/javascript1.jpg",
+      id: 1, cardTitle: "What Is JavaScript?", imageUrl: "/img/javascript1.jpg",
       description: `JavaScript (disingkat JS) adalah suatu bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian besar penjelajah web populer seperti Google Chrome, Internet Explorer (IE), Mozilla Firefox, Netscape dan Opera. Kode JavaScript dapat disisipkan dalam halaman web menggunakan tag script.[11] JavaScript merupakan salah satu teknologi inti World Wide Web selain HTML dan CSS. JavaScript membantu membuat halaman web interaktif dan merupakan bagian aplikasi web yang esensial...`,
       url: "https://id.wikipedia.org/wiki/JavaScript"
     },
     {
-      id: 2, cardTitle: "Javascript Historys", imageUrl: "../public/img/javascript2.jpg",
+      id: 2, cardTitle: "Javascript Historys", imageUrl: "/img/javascript2.jpg",
       description: `Sejarah sebuah teknologi selalu menarik untuk diikuti, mulai dari berdirinya sebuah perusahaan, pengembangan berbagai fitur, munculnya pesaing, trik bisnis yang digunakan, hingga kemunduran perusahaan tersebut. Jika berbicara tentang JavaScript, perusahaan yang dimaksud adalah Netscape Communications. Disinilah JavaScript "lahir" ... `,
       url: "https://www.duniailkom.com/tutorial-belajar-javascript-sejarah-dan-perkembangan-versi-javascript/"
     },
     {
-      id: 3, cardTitle: "Benefit Javasript", imageUrl: "../public/img/javascript3.jpg",
+      id: 3, cardTitle: "Benefit Javasript", imageUrl: "/img/javascript3.jpg",
       description: `Saat ini, belajar JavaScript memiliki banyak manfaat. Salah satunya karena JavaScript sendiri digunakan oleh berbagai website penelusur besar seperti Internet Explorer, Netscape, hingga Opera. Selain itu, perusahaan-perusahaan besar seperti Microsoft, Amazon, dan PayPal juga menggunakan jasa dari JavaScript. Lalu, apa saja alasan selanjutnya mengapa banyak perusahaan menggunakan bahasa pemrograman JavaScript dan belajar JavaScript bermanfaat untuk berkarir di bidang teknologi? Berikut alasannya...`,
       url: "https://glints.com/id/lowongan/manfaat-belajar-javascript/"
     }
@@ -113,7 +113,7 @@ const LandingPage = () => {
       </header>
 
       {/* hero section start */}
-      <section id="hero" className="w-full h-[100vh] flex flex-col items-start justify-end bg-cover bg-top bg-no-repeat bg-fixed pl-4 pb-52 sm:pb-8 md:pb-20 md:pl-8 lg:pb-24" style={{ backgroundImage: "url('../public/img/login.jpg')" }}>
+      <section id="hero" className="w-full h-[100vh] flex flex-col items-start justify-end bg-cover bg-top bg-no-repeat bg-fixed pl-4 pb-52 sm:pb-8 md:pb-20 md:pl-8 lg:pb-24" style={{ backgroundImage: "url('/img/login.jpg')" }}>
         <h1 className="text-white  text-base w-2/3 sm:w-2/5 capitalize sm:text-lg md:text-2xl lg:w-2/3 lg:text-4xl">"Learn <span className="text-yellow-300 font-bold italic">JavaScript</span> at your own pace with <span className="text-yellow-300 font-bold italic">LutfiScript</span> flexible courses."</h1>
 
         <div className="mt-2 sm:mt-4 lg:mt-5">
@@ -127,7 +127,7 @@ const LandingPage = () => {
       <section id="author" className="w-full py-10 px-4 sm:px-10 sm:py-5 md:px-4 md:py-10 lg:py-12 lg:px-6">
         <div className="md:w-full md:flex">
           <div className="w-full flex items-center justify-center  pb-4 md:pb-0 md:w-2/3">
-            <img src="../public/img/lutfi.png" alt="" className="w-1/2 sm:w-1/3 md:w-full" />
+            <img src="/img/lutfi.png" alt="" className="w-1/2 sm:w-1/3 md:w-full" />
           </div>
 
           <div className="text-center gap-y-3 flex flex-col w-full md:text-start md:justify-center md:items-start md:px-8">
@@ -157,7 +157,7 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="w-full h-40  md:h-96 md:w-1/2 flex items-center jusce pt-5">
-            <img src="../public/img/about-home.jpg" alt="" className="w-full h-full object-cover object-center rounded-xl" />
+            <img src="/img/about-home.jpg" alt="" className="w-full h-full object-cover object-center rounded-xl" />
           </div>
         </div>
       </section>
