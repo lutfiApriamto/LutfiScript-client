@@ -56,6 +56,7 @@ const Quiz = ()=> {
                         setDisplay={setDisplay}
                         score={score}
                         setIndex={setIndex}
+                        judul={judul}
                     />
                 )}
                 {display === 'review' && (

@@ -1,8 +1,31 @@
-const Score = ({setDisplay, score, setIndex})=> {
+import React, { useEffect, useState } from "react";
+import axios from 'axios'
+
+const Score = ({setDisplay, score, setIndex, judul})=> {
+    const [username, setUsername] = useState("")
     const handleClick = () => {
 		setDisplay('review');
 		setIndex(0);
 	};
+    
+    useEffect(() => {
+        const username = localStorage.getItem("username")
+        setUsername(username)
+    },[])
+
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        await axios.post("https://lutfiscript-api.vercel.app/api/auth/submitresult", {
+            percobaan , username , score: score.score, quizname:judul
+        })
+        alert('hasil tersimpan')
+        setDisplay('start')
+    } catch (error) {
+        alert(error)
+    }
+    
+    }
     return (
         <>
         <div className="w-full flex flex-col gap-y-8 justify-center items-center">
@@ -25,7 +48,7 @@ const Score = ({setDisplay, score, setIndex})=> {
                         Review Answer
                 </button>
                 <button 
-                    onClick={() => setDisplay('submitresult')}
+                    onClick={handleSubmit}
                     className="text-white bg-black px-4 py-2 rounded-lg hover:bg-slate-900 transition duration-300 sm:text-xl">
                         Submit results
                 </button>

@@ -42,7 +42,6 @@ function App() {
 
 
         <Route path="/admin" element={<MainAdmin />} />
-        <Route path="/adminRegister" element={<AdminRegister />} />
         <Route path="/adminLogin" element={<AdminLogin />} />
         <Route path="/admin/editmodule/:id" element={<EditModule />} />
         <Route path="/admin/viewuser/:id" element={<ViewUser />} />
