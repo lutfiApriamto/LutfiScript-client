@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const Score = ({setDisplay, score, setIndex, judul})=> {
     const [username, setUsername] = useState("")
+    let percobaan = 0;
     const handleClick = () => {
 		setDisplay('review');
 		setIndex(0);
