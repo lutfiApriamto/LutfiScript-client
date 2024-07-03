@@ -3,7 +3,7 @@ import { questions } from "../data/data";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 const Question = ({ setDisplay, setScore, index, answer, handleNext, handlePrev, setAnswer }) => {
-    const [timeLeft, setTimeLeft] = useState(10); // 10 menit dalam detik
+    const [timeLeft, setTimeLeft] = useState(600); // 10 menit dalam detik
 
     useEffect(() => {
         const timer = setInterval(() => {

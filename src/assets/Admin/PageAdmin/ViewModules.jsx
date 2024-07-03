@@ -30,7 +30,7 @@ const ViewModules = () => {
 
     return(
         <>
-                        <div className="w-full px-1 sm:px-3 md:px-5 py-3 lg:px-11 lg:py-10 h-screen overflow-auto">
+                <div className="w-full px-1 sm:px-3 md:px-5 py-3 lg:px-11 lg:py-10 h-screen overflow-auto">
                 <h1 className="text-yellow-300 font-bold text-2xl text-center mb-4 md:text-6xl md:mb-8 lg:mb-14">MODULE COLLECTIONS</h1>
                 <div className="w-full">
                 <table className="table-auto border-separate border border-slate-400 bg-white text-center w-full">

@@ -81,7 +81,7 @@ const LandingPage = () => {
     <>
       <header className="py-5 w-full bg-white bg-opacity-10 backdrop-blur-md fixed top-0 z-10">
         <nav className="lg:px-5 md:px-5 flex justify-between items-center px-3 relative">
-          <Link to="/adminRegister" className="text-2xl font-black text-yellow-300 italic">LutfiScript</Link>
+          <h1 className="text-2xl font-black text-yellow-300 italic">LutfiScript</h1>
 
           <div>
             <div className="md:hidden absolute top-1 right-4" onClick={toggleMenu}>

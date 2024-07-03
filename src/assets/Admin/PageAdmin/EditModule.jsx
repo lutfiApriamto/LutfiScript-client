@@ -39,6 +39,7 @@ const EditModule = () => {
     return(
         <>
         <div className=" p-4 w-full flex flex-wrap justify-center items-center lg:p-7">
+        <Link to='/admin' className="fixed top-3 left-3 bg-yellow-300 px-2 py-1 rounded font-bold italic hover:bg-yellow-600">Back to Home</Link>
             <h1 className="text-yellow-300 w-full font-bold text-3xl text-center mb-6 lg:text-6xl">EDIT MODULE</h1>
             <form onSubmit={handleSubmit} className="w-full lg:w-4/5  p-4 bg-white rounded shadow-lg">
                 <div className="mb-2">
