@@ -39,7 +39,7 @@ const LutfiScriptPage = () => {
     toast.success('Berhasil Logout')
   }
   const handleLogout = () => {
-    ToastLogout
+    ToastLogout()
     localStorage.removeItem("token")
     localStorage.removeItem("username")
     axios.get('https://lutfiscript-api.vercel.app/api/auth/logout')
