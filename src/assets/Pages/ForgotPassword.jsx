@@ -34,7 +34,7 @@ const ForgotPassword = () => {
         e.preventDefault();
         try {
             const response = await toast.promise(
-                axios. axios.post('https://lutfiscript-api.vercel.app/api/auth/forgotpassword', { email }),
+                axios.post('https://lutfiscript-api.vercel.app/api/auth/forgotpassword', { email }),
                 { pending: 'Loading in...', success: 'Silahkan cek email untuk melakukan reset password', error: 'Failed to log in'}
             )
             setTimeout(() => {
