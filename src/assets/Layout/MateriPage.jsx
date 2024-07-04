@@ -1,39 +1,36 @@
 import { Link } from "react-router-dom";
 import Footer from "../Component/Footer";
-import axios from "axios"
-import { useState, useEffect } from "react"
-import {  useParams } from "react-router-dom"
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 const MateriPage = () => {
-
-  const [judul, setJudul] = useState("")
-  const [link, setLink] = useState("")
-  const [desc, setDesc] = useState("")
-  const {id} = useParams()
+  const [judul, setJudul] = useState("");
+  const [link, setLink] = useState("");
+  const [desc, setDesc] = useState("");
+  const { id } = useParams();
 
   useEffect(() => {
-    getModuleByID()
-  },[])
+    getModuleByID();
+  }, []);
 
   const getModuleByID = async () => {
-    const response = await axios.get(`https://lutfiscript-api.vercel.app/api/modules/${id}/getModulesByID`)
-    setJudul(response.data.judul)
-    setLink(response.data.link)
-    setDesc(response.data.desc)
-  }
-  
-  const [email, setEmail] = useState("")
-  const [modulename, setModulename] = useState("")
-  const [suggestion, setSuggestion ] = useState("")
+    const response = await axios.get(`https://lutfiscript-api.vercel.app/api/modules/${id}/getModulesByID`);
+    setJudul(response.data.judul);
+    setLink(response.data.link);
+    setDesc(response.data.desc);
+  };
+
+  const [email, setEmail] = useState("");
+  const [suggestion, setSuggestion] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const toastId = toast.loading('Loading...');
     try {
-      const response = await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion", 
+      const response = await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion",
         { email, modulename: judul, suggestion });
 
       toast.update(toastId, {
@@ -50,29 +47,29 @@ const MateriPage = () => {
         autoClose: 2000, // close after 2 seconds
       });
     }
-  }
+  };
 
   return (
     <>
       <section
         id="hero"
-        className="w-full h-[50vh] sm:h-[75vh] flex justify-center py-28 mb-28 sm:mb-16 md:mb-12 lg:mb-20 lg:py-14 lg:h-[60vh]"
+        className="w-full h-[50vh] sm:h-[75vh] flex justify-center py-28 mb-28 sm:mb-16 md:mb-12 lg:mb-20 lg:py-10 lg:h-[60vh]"
       >
         <Link to="/lutfiscript" className="bg-yellow-300 hover:bg-yellow-500 absolute top-4 left-3 text-xs px-4 py-2 rounded-xl shadow-2xl capitalize font-bold cursor-pointer opacity-70 hover:opacity-100 transition duration-500 md:text-xl md:top-7 md:left-5 md:px-6 md:py-3 lg:text-base lg:top-4 lg:left-4">
           Back to Home
         </Link>
 
         <iframe
-        src={link}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
-        
-        className="w-4/5 h-52 bg-black rounded-xl sm:w-3/4 sm:h-72 md:h-80 md:w-2/3 lg:w-1/2 lg:h-80"></iframe>
+          src={link}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
+
+          className="w-4/5 h-52 bg-black rounded-xl sm:w-3/4 sm:h-72 md:h-80 md:w-2/3 lg:w-1/2 lg:h-80"></iframe>
       </section>
 
-      <section id="materi" className="w-full  py-10 px-3 sm:px-8 lg:px-44">
+      <section id="materi" className="w-full py-10 px-3 sm:px-8 lg:px-44">
         <div className="bg-white pt-5 pb-14 rounded-lg md:mx-auto md:pt-8 md:pb-24 ">
           <h1 className="text-center font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
             {judul}
@@ -142,15 +139,14 @@ const MateriPage = () => {
                   htmlFor="suggestion"
                   className="w-full mb-1 block font-bold sm:text-xl sm:mb-3"
                 >
-                  Saran <span className="text-xs font-thin">{`(maksimal 250 karakter)`}</span>
+                  suggestion
                 </label>
                 <textarea
                   placeholder="suggestion..."
                   name="suggestion"
                   id="suggestion"
-                  maxLength={250}
                   onChange={(e) => setSuggestion(e.target.value)}
-                  className="w-full border border-black h-44 rounded-md px-2 py-2"
+                  className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3"
                 />
               </div>
 
