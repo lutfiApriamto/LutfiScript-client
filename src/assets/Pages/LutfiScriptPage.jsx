@@ -4,6 +4,8 @@ import HomePage from "../Layout/HomePage";
 import ModulesPage from "../Layout/ModulesPage";
 import GamePage from "../Layout/GamePage";
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LutfiScriptPage = () => {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -32,15 +34,32 @@ const LutfiScriptPage = () => {
   }, [navigate]);
 
   axios.defaults.withCredentials = true
-  const handleLogout = () => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("username")
-    axios.get('https://lutfiscript-api.vercel.app/api/auth/logout')
-    .then(res => {
-      if(res.data.status){
-        navigate('/')
-      }
-    }).catch(err => console.log(err)) 
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token")
+  //   localStorage.removeItem("username")
+  //   axios.get('https://lutfiscript-api.vercel.app/api/auth/logout')
+  //   .then(res => {
+  //     if(res.data.status){
+  //       navigate('/')
+  //     }
+  //   }).catch(err => console.log(err)) 
+  // }
+
+  const handleLogout =  () => {
+    try {
+      setTimeout(async () => {
+        await toast.promise(
+          axios.get('https://lutfiscript-api.vercel.app/api/auth/logout',{
+          pending: 'Loading...',
+          success: 'Berhasil Logout!',
+          error: 'Failed to log in'
+          })
+        )
+      localStorage.removeItem("username")
+      },200)
+    } catch (error) {
+      toast.error(error)
+    }
   }
 
   const toggleMenu = () => {
@@ -108,6 +127,7 @@ const LutfiScriptPage = () => {
         </nav>
       </header>
       {pages[currentPage]}
+      <ToastContainer position="top-center" />
     </>
   );
 };
