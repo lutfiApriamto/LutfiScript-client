@@ -3,30 +3,48 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     axios.post('https://lutfiscript-api.vercel.app/api/auth/forgotpassword', { email })
+    //         .then(response => {
+    //             console.log(response);
+    //             alert("Password reset link has been sent to your email");
+    //             navigate('/login');
+    //         })
+    //         .catch(err => {
+    //             if (err.response && err.response.status === 404) {
+    //                 alert("Email not found");
+    //             } else if (err.response && err.response.data.message) {
+    //                 alert(err.response.data.message); // Menampilkan pesan error dari server
+    //             } else {
+    //                 alert("Terjadi kesalahan saat mengirim email"); // Pesan default jika tidak ada pesan dari server
+    //             }
+    //             console.log(err);
+    //         });
+    // };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axios.post('https://lutfiscript-api.vercel.app/api/auth/forgotpassword', { email })
-            .then(response => {
-                console.log(response);
-                alert("Password reset link has been sent to your email");
-                navigate('/login');
-            })
-            .catch(err => {
-                if (err.response && err.response.status === 404) {
-                    alert("Email not found");
-                } else if (err.response && err.response.data.message) {
-                    alert(err.response.data.message); // Menampilkan pesan error dari server
-                } else {
-                    alert("Terjadi kesalahan saat mengirim email"); // Pesan default jika tidak ada pesan dari server
-                }
-                console.log(err);
-            });
-    };
+        try {
+            const response = await toast.promise(
+                axios. axios.post('https://lutfiscript-api.vercel.app/api/auth/forgotpassword', { email }),
+                { pending: 'Loading in...', success: 'Silahkan cek email untuk melakukan reset password', error: 'Failed to log in'}
+            )
+        } catch (error) {
+            if (err.response && err.response.status === 404){
+                toast.error("Email not found")
+            } else {
+                toast.error(err.response.data.message)
+            }
+        }
+    }
 
     return (
         <section
@@ -72,6 +90,7 @@ const ForgotPassword = () => {
                     Reserved.
                 </p>
             </div>
+            <ToastContainer position="top-center" />
         </section>
     );
 };
