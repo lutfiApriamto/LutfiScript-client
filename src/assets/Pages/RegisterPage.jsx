@@ -110,6 +110,7 @@ const RegisterPage = () => {
           <p className="text-white text-center mt-3 text-sm italic font-thin lg:mt-5"> Copyright © 2024 by{" "} <span className="text-yellow-300">LutfiScript</span> | All Rigths Reserved.</p>
         </div>
       </section>
+      <ToastContainer position="top-center" />
     </>
   );
 };
