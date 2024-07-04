@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState();
@@ -16,13 +18,19 @@ const LoginPage = () => {
     .then(response => {
         const username = jwtDecode(response.data.token)
         localStorage.setItem("username", username.username)
-        alert("Berhasil Login");
+        toast.success("Berhasil Login", {
+          position: toast.POSITION.TOP_CENTER
+        });
         navigate('/lutfiscript');
     }).catch(err => {
         if (err.response && err.response.data.message) {
-            alert(err.response.data.message); 
+          toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_CENTER
+          }); 
         } else {
-            alert("Terjadi kesalahan saat login");
+          toast.error("Terjadi kesalahan saat login", {
+            position: toast.POSITION.TOP_CENTER
+          });
         }
         console.log(err)
     });
@@ -60,6 +68,7 @@ const LoginPage = () => {
         <p className="text-white text-center mt-3 text-sm italic font-thin lg:mt-5">Copyright © 2024 by{" "} <span className="text-yellow-300">LutfiScript</span> | All Rigths Reserved.</p>
       </div>
     </section>
+    <ToastContainer />
     </>
   );
 };
