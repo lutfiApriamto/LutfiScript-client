@@ -25,9 +25,11 @@ const LoginPage = () => {
         }
       );
 
-      const username = jwtDecode(response.data.token);
-      localStorage.setItem("username", username.username);
-      navigate('/lutfiscript');
+      setTimeout(() => {
+        const username = jwtDecode(response.data.token);
+        localStorage.setItem("username", username.username);
+        navigate('/lutfiscript');
+      }, 3000);
     } catch (error) {
       if (error.response && error.response.data.message) {
         toast.error(error.response.data.message);
