@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ViewModules = () => {
 
@@ -76,6 +78,7 @@ const ViewModules = () => {
                     </table>
                 </div>
             </div>
+            <ToastContainer position="top-center" />
         </>
     )
 }
