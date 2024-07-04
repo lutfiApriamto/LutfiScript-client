@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState();
@@ -9,32 +11,67 @@ const RegisterPage = () => {
     const [password, setPassword] = useState();
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      axios.post('https://lutfiscript-api.vercel.app/api/auth/register', { email, username, password })
-          .then(response => {
-              console.log(response);
-              alert("Data berhasil ditambahkan");
-              navigate('/login');
-          }).catch(err => {
-              if (err.response) {
-                  const errorMessage = err.response.data.message;
-                  if (err.response.status === 400) {
-                      if (errorMessage === "Email already exists") {
-                          alert("Email sudah digunakan");
-                      } else if (errorMessage === "Username already exists") {
-                          alert("Username sudah digunakan");
-                      } else {
-                          alert(errorMessage);
-                      }
-                  } else {
-                      alert("Terjadi kesalahan saat mendaftar");
-                  }
-              } else {
-                  alert("Terjadi kesalahan saat mendaftar");
-              }
-              navigate('/register');
-          });
+  //   const handleSubmit = (e) => {
+  //     e.preventDefault();
+  //     axios.post('https://lutfiscript-api.vercel.app/api/auth/register', { email, username, password })
+  //         .then(response => {
+  //             console.log(response);
+  //             alert("Data berhasil ditambahkan");
+  //             navigate('/login');
+  //         }).catch(err => {
+  //             if (err.response) {
+  //                 const errorMessage = err.response.data.message;
+  //                 if (err.response.status === 400) {
+  //                     if (errorMessage === "Email already exists") {
+  //                         alert("Email sudah digunakan");
+  //                     } else if (errorMessage === "Username already exists") {
+  //                         alert("Username sudah digunakan");
+  //                     } else {
+  //                         alert(errorMessage);
+  //                     }
+  //                 } else {
+  //                     alert("Terjadi kesalahan saat mendaftar");
+  //                 }
+  //             } else {
+  //                 alert("Terjadi kesalahan saat mendaftar");
+  //             }
+  //             navigate('/register');
+  //         });
+  // // }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await toast.promise(
+        axios.post('https://lutfiscript-api.vercel.app/api/auth/register', { email, username, password }),
+        {
+          pending: 'Logging in...',
+          success: 'Berhasil Login!',
+          error: 'Failed to log in'
+        }
+      )
+      setTimeout(() => {
+        navigate("/login")
+      },2000)
+    } catch (err) {
+      if(err.response){
+        const errorMessage = err.response.data.message;
+        if (err.response.status === 400){
+          if (errorMessage === "Email already exists"){
+            toast.error("Email sudah digunakan")
+          } else if (errorMessage === "Username already exists"){
+            toast.error("Username sudah digunakan")
+          } else {
+            toast.error("Terjadi Kesalahan saat mendaftar, silahkan tunggu bebedapa saat lagi")
+          }
+        }
+      } else {
+        toast.error("Terjadi Kesalahan saat mendaftar, silahkan tunggu bebedapa saat lagi")
+      }
+      setTimeout(() => {
+        navigate("/register")
+      },1000)
+    }
   }
   
 
