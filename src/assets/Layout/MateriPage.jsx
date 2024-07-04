@@ -134,28 +134,26 @@ const MateriPage = () => {
                 </div>
               </div>
 
-              <div>
-                <label
-                  htmlFor="suggestion"
-                  className="w-full mb-1 block font-bold sm:text-xl sm:mb-3"
-                >
-                  suggestion
-                </label>
-                <textarea
-                  placeholder="suggestion..."
-                  name="suggestion"
-                  id="suggestion"
-                  onChange={(e) => setSuggestion(e.target.value)}
-                  className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3"
-                />
-              </div>
-
-              <div className="mt-5">
+              <label
+                htmlFor="suggestion"
+                className="w-full mb-1 block font-bold sm:text-xl sm:mb-3"
+              >
+                Saran <span className="text-xs font-thin">{`(maksimal 250 karakter)`}</span>
+              </label>
+              <textarea
+                name="suggestion"
+                onChange={(e) => setSuggestion(e.target.value)}
+                id="suggestion"
+                className="w-full border border-black h-44 rounded-md px-2 py-2"
+                placeholder="Masukan Saran anda disini ..."
+                maxLength={250}
+              ></textarea>
+              <div className="text-center mt-3">
                 <button
-                  className="w-full bg-yellow-300 px-2 py-3 rounded-md font-black text-xl text-slate-800 hover:bg-yellow-500 transition duration-300 md:w-1/2 md:px-5"
                   type="submit"
+                  className="py-2 px-3 bg-black text-white rounded-xl"
                 >
-                  Submit
+                  Send Message
                 </button>
               </div>
             </form>
