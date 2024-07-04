@@ -40,7 +40,7 @@ const ForgotPassword = () => {
             setTimeout(() => {
                 navigate("/login")
               },2000)
-        } catch (error) {
+        } catch (err) {
             if (err.response && err.response.status === 404){
                 toast.error("Email not found")
             } else {
