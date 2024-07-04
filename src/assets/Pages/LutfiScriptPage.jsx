@@ -35,20 +35,40 @@ const LutfiScriptPage = () => {
 
   axios.defaults.withCredentials = true
 
-  const ToastLogout = () =>{
-    toast.success('Berhasil Logout')
-  }
-  const handleLogout = () => {
-    ToastLogout()
-    localStorage.removeItem("token")
-    localStorage.removeItem("username")
-    axios.get('https://lutfiscript-api.vercel.app/api/auth/logout')
-    .then(res => {
-      if(res.data.status){
-        navigate('/')
-      }
-    }).catch(err => console.log(err)) 
-  }
+  // const ToastLogout = () =>{
+  //   toast.success('Berhasil Logout')
+  // }
+  // const handleLogout = () => {
+  //   ToastLogout()
+  //   localStorage.removeItem("token")
+  //   localStorage.removeItem("username")
+  //   axios.get('https://lutfiscript-api.vercel.app/api/auth/logout')
+  //   .then(res => {
+  //     if(res.data.status){
+  //       navigate('/')
+  //     }
+  //   }).catch(err => console.log(err)) 
+  // }
+
+  const handleLogout = async (event) => {
+    event.preventDefault(); // Menghentikan navigasi langsung
+    try {
+      await toast.promise(
+        axios.get('https://lutfiscript-api.vercel.app/api/auth/logout'),
+        {
+          pending: 'Logging out...',
+          success: 'Berhasil Logout!',
+          error: 'Gagal logout'
+        }
+      );
+      localStorage.removeItem("username");
+      navigate('/'); // Navigate setelah proses logout selesai
+    } catch (error) {
+      toast.error("Terjadi kesalahan saat logout");
+      console.error(error);
+    }
+  };
+  
 
   // const handleLogout = async () => {
   //   try {
@@ -126,7 +146,7 @@ const LutfiScriptPage = () => {
                 </li>
               ))}
               <div className="text-center mt-7 md:mt-0">
-                <Link onClick={handleLogout} to="/" className="bg-red-600 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">
+                <Link onClick={handleLogout}  className="bg-red-600 italic font-bold py-2 px-4 text-xs rounded-xl mt-3 md:mt-0 md:ml-4">
                   LogOut
                 </Link>
               </div>
