@@ -5,6 +5,8 @@ import { VscFeedback } from "react-icons/vsc";
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = ({setDisplay}) => {
 
@@ -21,15 +23,36 @@ const Home = ({setDisplay}) => {
       }, [navigate]);
 
     axios.defaults.withCredentials = true
-    const handleLogout = () => {
-    localStorage.removeItem("token")
-    axios.get('https://lutfiscript-api.vercel.app/api/admin/logout')
-    .then(res => {
-        if(res.data.status){
-        navigate('/adminLogin')
+    // const handleLogout = () => {
+    // localStorage.removeItem("token")
+    // axios.get('https://lutfiscript-api.vercel.app/api/admin/logout')
+    // .then(res => {
+    //     if(res.data.status){
+    //     navigate('/adminLogin')
+    //     }
+    // }).catch(err => console.log(err)) 
+    // }
+
+    const handleLogout = async (event) => {
+        event.preventDefault(); 
+        try {
+          await toast.promise(
+            axios.get('https://lutfiscript-api.vercel.app/api/admin/logout'),
+            {
+              pending: 'Logging out...',
+              success: 'Berhasil Logout!',
+              error: 'Gagal logout'
+            }
+          );
+          localStorage.removeItem("token");
+          setTimeout(()=> {
+            navigate('/adminLogin');
+          },2000)
+        } catch (error) {
+          toast.error("Terjadi kesalahan saat logout");
+          console.error(error);
         }
-    }).catch(err => console.log(err)) 
-    }
+      };
     return(
         <>
         <div className="p-4 w-full h-screen flex flex-col justify-center items-center gap-y-3">
@@ -73,6 +96,7 @@ const Home = ({setDisplay}) => {
                 className="bg-red-600 text-white py-1 hover:bg-red-800 transition duration-300 px-4 rounded font-bold italic cursor-pointer">Log Out</button>
             </div>
         </div>
+        <ToastContainer position="top-center" />
         </>
     )
 }
