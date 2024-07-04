@@ -45,22 +45,25 @@ const LutfiScriptPage = () => {
   //   }).catch(err => console.log(err)) 
   // }
 
-  const handleLogout =  () => {
+  const handleLogout = async () => {
     try {
-      setTimeout(async () => {
-        await toast.promise(
-          axios.get('https://lutfiscript-api.vercel.app/api/auth/logout',{
-          pending: 'Loading...',
+      await toast.promise(
+        axios.get('https://lutfiscript-api.vercel.app/api/auth/logout'),
+        {
+          pending: 'Logging out...',
           success: 'Berhasil Logout!',
-          error: 'Failed to log in'
-          })
-        )
-      localStorage.removeItem("username")
-      },200)
+          error: 'Failed to logout'
+        }
+      );
+      setTimeout(() => {
+        localStorage.removeItem("username");
+        navigate('/');
+      }, 1700)
     } catch (error) {
-      toast.error(error)
+      toast.error("An error occurred while logging out");
+      console.error(error);
     }
-  }
+  };
 
   const toggleMenu = () => {
     if (isMenuOpen) {

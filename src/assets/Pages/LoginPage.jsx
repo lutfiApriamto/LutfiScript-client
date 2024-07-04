@@ -20,7 +20,7 @@ const LoginPage = () => {
         axios.post('https://lutfiscript-api.vercel.app/api/auth/login', { email, password }),
         {
           pending: 'Logging in...',
-          success: 'Login successful!',
+          success: 'Berhasil Login!',
           error: 'Failed to log in'
         }
       );
@@ -29,7 +29,7 @@ const LoginPage = () => {
         const username = jwtDecode(response.data.token);
         localStorage.setItem("username", username.username);
         navigate('/lutfiscript');
-      }, 3000);
+      }, 2000);
     } catch (error) {
       if (error.response && error.response.data.message) {
         toast.error(error.response.data.message);
