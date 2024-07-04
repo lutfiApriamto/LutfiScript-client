@@ -44,6 +44,7 @@ const AdminLogin = () => {
                 }
             )
             setTimeout(() => {
+                localStorage.setItem("token", response.data.token)
                 navigate("/admin")
             },2000)
         } catch (error) {
