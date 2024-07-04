@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { FaStreetView } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const DataUser = () => {
@@ -13,13 +15,32 @@ const DataUser = () => {
         getUser()
     },[])
 
-    const deleteUser = async (id) => {
+    // const deleteUser = async (id) => {
+    //     try {
+    //         await axios.delete(`https://lutfiscript-api.vercel.app/api/auth/${id}/deleteUser`)
+    //         alert('Berhasil Menghapus User')
+    //         getUser()
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
+
+    const deleteUser = async (e, id) => {
+        e.preventDefault();
         try {
-            await axios.delete(`https://lutfiscript-api.vercel.app/api/auth/${id}/deleteUser`)
-            alert('Berhasil Menghapus User')
-            getUser()
+            const response = await toast.promise(
+                axios.delete(`https://lutfiscript-api.vercel.app/api/auth/${id}/deleteUser`),
+                {
+                    pending: 'Loading ...',
+                    success: 'User telah Dihapus!',
+                    error: 'Failed to Remove'
+                }
+            )
+            setTimeout(() => {
+                getUser()
+            },2000)
         } catch (error) {
-            console.log(error);
+            toast.error(error)
         }
     }
 
@@ -62,6 +83,7 @@ const DataUser = () => {
                     </table>
                 </div>
             </div>
+            <ToastContainer position="top-center" />
         </>
     )
 }

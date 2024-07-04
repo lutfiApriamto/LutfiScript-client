@@ -1,5 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const AddModules = ({setDisplay}) => {
@@ -8,17 +10,36 @@ const AddModules = ({setDisplay}) => {
     const [link, setLink] = useState("")
     const [desc, setDesc] = useState("")
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         await axios.post("https://lutfiscript-api.vercel.app/api/modules/addModules",{
+    //             judul, link, desc
+    //         })
+    //         alert('module berhasil di tambahkan')
+    //         setDisplay('viewmodules')
+    //     } catch (error) {
+    //         alert(error)
+    //         console.log(error)
+    //     }
+    // }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("https://lutfiscript-api.vercel.app/api/modules/addModules",{
-                judul, link, desc
-            })
-            alert('module berhasil di tambahkan')
-            setDisplay('viewmodules')
+            const response = await toast.promise(
+                axios.post("https://lutfiscript-api.vercel.app/api/modules/addModules",{judul, link, desc}),
+                {
+                    pending: 'Logging in...',
+                    success: 'Module ditambahkan',
+                    error: 'Failed to add module'
+                }
+            )
+            setTimeout(() => {
+                setDisplay('viewmodules')
+            },2000)
         } catch (error) {
-            alert(error)
-            console.log(error)
+            toast.error(error)
         }
     }
 
@@ -43,6 +64,7 @@ const AddModules = ({setDisplay}) => {
                     <button className="py-1 px-4 bg-black rounded hover:bg-slate-900 text-white italic">Submit</button>
                 </div>
             </form>
+            <ToastContainer position="top-center" />
         </div>
         </>
     )

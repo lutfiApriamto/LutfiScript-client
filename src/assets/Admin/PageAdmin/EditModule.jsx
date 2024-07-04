@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const EditModule = () => {
@@ -22,17 +24,36 @@ const EditModule = () => {
         setDesc(response.data.desc)
     }
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         await axios.patch(`https://lutfiscript-api.vercel.app/api/modules/${id}/updateModule`,{
+    //             judul, link, desc
+    //         })
+    //         alert('Module telah terupdate')
+    //         navigate("/admin")
+    //     } catch (error) {
+    //         alert(error)
+    //         console.log(error)
+    //     }
+    // }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.patch(`https://lutfiscript-api.vercel.app/api/modules/${id}/updateModule`,{
-                judul, link, desc
-            })
-            alert('Module telah terupdate')
-            navigate("/admin")
+            const response = await toast.promise (
+            axios.patch(`https://lutfiscript-api.vercel.app/api/modules/${id}/updateModule`,{judul, link, desc}),
+            {
+                pending: 'Loading...',
+                success: 'Module Di ubah!',
+                error: 'Failed update modlue'
+            }
+            )
+            setTimeout(() => {
+                navigate("/admin")
+            },2000)
         } catch (error) {
-            alert(error)
-            console.log(error)
+            toast.error(error)
         }
     }
 
@@ -59,6 +80,7 @@ const EditModule = () => {
                 </div>
             </form>
         </div>
+        <ToastContainer position="top-center" />
         </>
     )
 }

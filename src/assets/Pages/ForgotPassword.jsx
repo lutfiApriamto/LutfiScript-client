@@ -10,25 +10,6 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     axios.post('https://lutfiscript-api.vercel.app/api/auth/forgotpassword', { email })
-    //         .then(response => {
-    //             console.log(response);
-    //             alert("Password reset link has been sent to your email");
-    //             navigate('/login');
-    //         })
-    //         .catch(err => {
-    //             if (err.response && err.response.status === 404) {
-    //                 alert("Email not found");
-    //             } else if (err.response && err.response.data.message) {
-    //                 alert(err.response.data.message); // Menampilkan pesan error dari server
-    //             } else {
-    //                 alert("Terjadi kesalahan saat mengirim email"); // Pesan default jika tidak ada pesan dari server
-    //             }
-    //             console.log(err);
-    //         });
-    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Score = ({setDisplay, score, setIndex, judul})=> {
     const [username, setUsername] = useState("")
@@ -14,19 +16,37 @@ const Score = ({setDisplay, score, setIndex, judul})=> {
         setUsername(username)
     },[])
 
+    // const handleSubmit = async (e) => {
+    // e.preventDefault();
+    // try {
+    //     await axios.post("https://lutfiscript-api.vercel.app/api/auth/submitresult", {
+    //         percobaan , username , score: score.score, quizname:judul
+    //     })
+    //     alert('hasil tersimpan')
+    //     setDisplay('start')
+    // } catch (error) {
+    //     alert(error)
+    // }
+    // }
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-        await axios.post("https://lutfiscript-api.vercel.app/api/auth/submitresult", {
-            percobaan , username , score: score.score, quizname:judul
-        })
-        alert('hasil tersimpan')
-        setDisplay('start')
-    } catch (error) {
-        alert(error)
+        e.preventDefault();
+        try {
+            const response = await toast.promise(
+                await axios.post("https://lutfiscript-api.vercel.app/api/auth/submitresult", {percobaan , username , score: score.score, quizname:judul}),
+                {
+                    pending: 'Loading...',
+                    success: 'Score Tersimpan!',
+                    error: 'Failed to upload score'
+                }
+            )
+            setTimeout(() => {
+                setDisplay('start')
+            },2000)
+        } catch (error) {
+            toast.error(error)
+        }
     }
-    
-    }
+
     return (
         <>
         <div className="w-full flex flex-col gap-y-8 justify-center items-center">
@@ -55,6 +75,7 @@ const Score = ({setDisplay, score, setIndex, judul})=> {
                 </button>
             </div>
         </div>
+        <ToastContainer position="top-center" />
         </>
     )
 }

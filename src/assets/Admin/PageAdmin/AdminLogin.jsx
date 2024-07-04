@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminLogin = () => {
 
@@ -9,25 +11,44 @@ const AdminLogin = () => {
     const navigate = useNavigate()
 
     axios.defaults.withCredentials = true
-    const handleSubmit = (e) => {
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     axios.post('https://lutfiscript-api.vercel.app/api/admin/loginAdmin', {
+    //         username, password
+    //     })
+    //     .then(response => {
+    //         console.log(response)
+    //         localStorage.setItem("token", response.data.token)
+    //         alert('Berhasil Melakukan Login')
+    //         navigate('/admin')
+    //     })
+    //     .catch(err => {
+    //         if (err.response && err.response.data.message) {
+    //             alert(err.response.data.message);
+    //         } else {
+    //             alert("Terjadi kesalahan saat login"); 
+    //         }
+    //         console.log(err)
+    //     })
+    // }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axios.post('https://lutfiscript-api.vercel.app/api/admin/loginAdmin', {
-            username, password
-        })
-        .then(response => {
-            console.log(response)
-            localStorage.setItem("token", response.data.token)
-            alert('Berhasil Melakukan Login')
-            navigate('/admin')
-        })
-        .catch(err => {
-            if (err.response && err.response.data.message) {
-                alert(err.response.data.message);
-            } else {
-                alert("Terjadi kesalahan saat login"); 
-            }
-            console.log(err)
-        })
+        try {
+            const response = await toast.promise(
+                axios.post('https://lutfiscript-api.vercel.app/api/admin/loginAdmin', { username, password}),
+                {
+                    pending: 'Logging in...',
+                    success: 'Berhasil Login!',
+                    error: 'Failed to log in'
+                }
+            )
+            setTimeout(() => {
+                navigate("/admin")
+            },2000)
+        } catch (error) {
+            toast.error(error)
+        }
     }
     return (
         <>
@@ -62,6 +83,7 @@ const AdminLogin = () => {
                         Login
                     </button>
             </form>
+            <ToastContainer position="top-center" />
         </section>
         </>
     )

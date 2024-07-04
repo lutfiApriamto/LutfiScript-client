@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProfilePage = () => {
   const [username, setUsername] = useState("");
@@ -20,20 +22,41 @@ const ProfilePage = () => {
     setQuiz(response.data.quiz)
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios.patch(`https://lutfiscript-api.vercel.app/api/auth/${id}/updateUser`, {
+  //       username,
+  //     });
+  //     alert('Username telah di ubah');
+  //     localStorage.setItem("username", username);
+  //     getUserByID();
+  //     navigate('/lutfiscript');
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://lutfiscript-api.vercel.app/api/auth/${id}/updateUser`, {
-        username,
-      });
-      alert('Username telah di ubah');
-      localStorage.setItem("username", username);
-      getUserByID();
-      navigate('/lutfiscript');
+      const response = await toast.promise(
+        axios.patch(`https://lutfiscript-api.vercel.app/api/auth/${id}/updateUser`, { username,}),
+        {
+          pending: 'Loading ...',
+          success: 'Username di ubah!',
+          error: 'Failed to update username'
+        }
+      )
+      localStorage.setItem("username", username)
+      getUserByID()
+      setTimeout(()=> {
+        navigate('/lutfiscript');
+      },2000)
     } catch (error) {
-      console.log(error);
+      toast.error(error)
     }
-  };
+  }
 
   return (
     <section className="w-full bg-white py-16 flex flex-col items-center h-screen overflow-y-scroll">
@@ -72,7 +95,7 @@ const ProfilePage = () => {
 
 
       </div>
-      
+      <ToastContainer position="top-center" />
     </section>
   );
 };

@@ -3,6 +3,8 @@ import Footer from "../Component/Footer";
 import axios from "axios"
 import { useState, useEffect } from "react"
 import {  useParams } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const MateriPage = () => {
@@ -27,18 +29,33 @@ const MateriPage = () => {
   const [modulename, setModulename] = useState("")
   const [suggestion, setSuggestion ] = useState("")
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault(); 
+  //   try {
+  //     await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion", {
+  //       email, modulename: judul, suggestion
+  //     });
+  //     alert('komentar berhasil di upload');
+  //   } catch (error) {
+  //     alert(error.response.data.message);
+  //   }
+  // }
+  
   const handleSubmit = async (e) => {
     e.preventDefault(); 
     try {
-      await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion", {
-        email, modulename: judul, suggestion
-      });
-      alert('komentar berhasil di upload');
+      const response = await toast.promise(
+        await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion", {email, modulename: judul, suggestion}),
+        {
+          pending: 'Loding...',
+          success: 'Saran terkirim !',
+          error: 'Failed to send message'
+        }
+      )
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error)
     }
   }
-  
 
 
   return (
@@ -154,6 +171,7 @@ const MateriPage = () => {
       </section>
 
       <Footer></Footer>
+      <ToastContainer position="top-center" />
     </>
   );
 };

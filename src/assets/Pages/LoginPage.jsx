@@ -21,7 +21,7 @@ const LoginPage = () => {
         {
           pending: 'Logging in...',
           success: 'Berhasil Login!',
-          error: 'Failed to log in'
+          error: 'Failed to Login'
         }
       );
 
