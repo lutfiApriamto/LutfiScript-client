@@ -19,12 +19,30 @@ const ViewModules = () => {
         setModule(response.data);
     }
 
+    // const deletModule = async (id) => {
+    //     try {
+    //         await axios.delete(`https://lutfiscript-api.vercel.app/api/modules/${id}/deleteModule`)
+    //         getModules();
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
     const deletModule = async (id) => {
         try {
-            await axios.delete(`https://lutfiscript-api.vercel.app/api/modules/${id}/deleteModule`)
-            getModules();
+            const response = await toast.promise(
+                axios.delete(`https://lutfiscript-api.vercel.app/api/modules/${id}/deleteModule`),
+                {
+                    pending: 'Loading ...',
+                    success: 'Module telah Dihapus!',
+                    error: 'Failed to Remove'
+                }
+            )
+            setTimeout(() => {
+                getModules();
+            },2000)
         } catch (error) {
-            console.log(error)
+            toast.error(error)
         }
     }
 
