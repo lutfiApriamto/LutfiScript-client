@@ -29,33 +29,28 @@ const MateriPage = () => {
   const [modulename, setModulename] = useState("")
   const [suggestion, setSuggestion ] = useState("")
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault(); 
-  //   try {
-  //     await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion", {
-  //       email, modulename: judul, suggestion
-  //     });
-  //     alert('komentar berhasil di upload');
-  //   } catch (error) {
-  //     alert(error.response.data.message);
-  //   }
-  // }
-  
   const handleSubmit = async (e) => {
     e.preventDefault(); 
+    const toastId = toast.loading('Loading...');
     try {
-      const response = await toast.promise(
-        await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion", {email, modulename: judul, suggestion}),
-        {
-          success: 'Saran terkirim !',
-          error: 'Failed to send message'
-        }
-      )
+      const response = await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion", 
+        { email, modulename: judul, suggestion });
+
+      toast.update(toastId, {
+        render: 'Saran terkirim!',
+        type: 'success',
+        isLoading: false,
+        autoClose: 2000, // close after 2 seconds
+      });
     } catch (error) {
-      toast.error(error)
+      toast.update(toastId, {
+        render: 'Failed to send message',
+        type: 'error',
+        isLoading: false,
+        autoClose: 2000, // close after 2 seconds
+      });
     }
   }
-
 
   return (
     <>
@@ -137,31 +132,33 @@ const MateriPage = () => {
                     name="modulename"
                     onChange={(e) => setModulename(e.target.value)}
                     id="modulename"
-                    className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3 font-black "
+                    className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3"
                   />
                 </div>
               </div>
 
-              <label
-                htmlFor="suggestion"
-                className="w-full mb-1 block font-bold sm:text-xl sm:mb-3"
-              >
-                Saran <span className="text-xs font-thin">{`(maksimal 250 karakter)`}</span>
-              </label>
-              <textarea
-                name="suggestion"
-                onChange={(e) => setSuggestion(e.target.value)}
-                id="suggestion"
-                className="w-full border border-black h-44 rounded-md px-2 py-2"
-                placeholder="Masukan Saran anda disini ..."
-                maxLength={250}
-              ></textarea>
-              <div className="text-center mt-3">
-                <button
-                  type="submit"
-                  className="py-2 px-3 bg-black text-white rounded-xl"
+              <div>
+                <label
+                  htmlFor="suggestion"
+                  className="w-full mb-1 block font-bold sm:text-xl sm:mb-3"
                 >
-                  Send Message
+                  suggestion
+                </label>
+                <textarea
+                  placeholder="suggestion..."
+                  name="suggestion"
+                  id="suggestion"
+                  onChange={(e) => setSuggestion(e.target.value)}
+                  className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3"
+                />
+              </div>
+
+              <div className="mt-5">
+                <button
+                  className="w-full bg-yellow-300 px-2 py-3 rounded-md font-black text-xl text-slate-800 hover:bg-yellow-500 transition duration-300 md:w-1/2 md:px-5"
+                  type="submit"
+                >
+                  Submit
                 </button>
               </div>
             </form>
@@ -169,7 +166,7 @@ const MateriPage = () => {
         </div>
       </section>
 
-      <Footer></Footer>
+      <Footer />
       <ToastContainer position="top-center" />
     </>
   );

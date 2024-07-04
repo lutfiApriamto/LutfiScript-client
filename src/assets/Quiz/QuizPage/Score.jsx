@@ -7,42 +7,39 @@ const Score = ({setDisplay, score, setIndex, judul})=> {
     const [username, setUsername] = useState("")
     let percobaan = 0;
     const handleClick = () => {
-		setDisplay('review');
-		setIndex(0);
-	};
+        setDisplay('review');
+        setIndex(0);
+    };
     
     useEffect(() => {
         const username = localStorage.getItem("username")
         setUsername(username)
     },[])
 
-    // const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // try {
-    //     await axios.post("https://lutfiscript-api.vercel.app/api/auth/submitresult", {
-    //         percobaan , username , score: score.score, quizname:judul
-    //     })
-    //     alert('hasil tersimpan')
-    //     setDisplay('start')
-    // } catch (error) {
-    //     alert(error)
-    // }
-    // }
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const toastId = toast.loading('Loading...');
         try {
-            const response = await toast.promise(
-                await axios.post("https://lutfiscript-api.vercel.app/api/auth/submitresult", {percobaan , username , score: score.score, quizname:judul}),
-                {
-                    success: 'Score Tersimpan!',
-                    error: 'Failed to upload score'
-                }
-            )
+            const response = await axios.post("https://lutfiscript-api.vercel.app/api/auth/submitresult", 
+                { percobaan, username, score: score.score, quizname: judul });
+
+            toast.update(toastId, {
+                render: 'Score Tersimpan!',
+                type: 'success',
+                isLoading: false,
+                autoClose: 2000, // close after 2 seconds
+            });
+
             setTimeout(() => {
-                setDisplay('start')
-            },2000)
+                setDisplay('start');
+            }, 2000);
         } catch (error) {
-            toast.error(error)
+            toast.update(toastId, {
+                render: 'Failed to upload score',
+                type: 'error',
+                isLoading: false,
+                autoClose: 2000, // close after 2 seconds
+            });
         }
     }
 
