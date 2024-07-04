@@ -34,7 +34,6 @@ const Score = ({setDisplay, score, setIndex, judul})=> {
             const response = await toast.promise(
                 await axios.post("https://lutfiscript-api.vercel.app/api/auth/submitresult", {percobaan , username , score: score.score, quizname:judul}),
                 {
-                    pending: 'Loading...',
                     success: 'Score Tersimpan!',
                     error: 'Failed to upload score'
                 }

@@ -47,7 +47,6 @@ const MateriPage = () => {
       const response = await toast.promise(
         await axios.post("https://lutfiscript-api.vercel.app/api/auth/suggestion", {email, modulename: judul, suggestion}),
         {
-          pending: 'Loding...',
           success: 'Saran terkirim !',
           error: 'Failed to send message'
         }
