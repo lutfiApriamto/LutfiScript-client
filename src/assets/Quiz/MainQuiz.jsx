@@ -4,7 +4,6 @@ import Start from "./QuizPage/Start"
 import Question from "./QuizPage/Question"
 import Score from "./QuizPage/Score"
 import Review from "./QuizPage/Review"
-import SubmitResult from "./QuizPage/SubmitResult"
 import { useState } from "react"
 
 const Quiz = ()=> {
@@ -68,13 +67,6 @@ const Quiz = ()=> {
                         handlePrev={handlePrev}
                     />
                 ) }
-                {display === 'submitresult' &&
-                <SubmitResult
-                    setDisplay={setDisplay}
-                    score={score}
-                    judul={judul}
-                />
-                }
             </div>
             <FooterQuiz
             display={display}
