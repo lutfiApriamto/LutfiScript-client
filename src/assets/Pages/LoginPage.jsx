@@ -18,19 +18,13 @@ const LoginPage = () => {
     .then(response => {
         const username = jwtDecode(response.data.token)
         localStorage.setItem("username", username.username)
-        toast.success("Berhasil Login", {
-          position: toast.POSITION.TOP_CENTER
-        });
+        toast.success("Berhasil Login");
         navigate('/lutfiscript');
     }).catch(err => {
         if (err.response && err.response.data.message) {
-          toast.error(err.response.data.message, {
-            position: toast.POSITION.TOP_CENTER
-          }); 
+          toast.error(err.response.data.message); 
         } else {
-          toast.error("Terjadi kesalahan saat login", {
-            position: toast.POSITION.TOP_CENTER
-          });
+          toast.error("Terjadi kesalahan saat login");
         }
         console.log(err)
     });
