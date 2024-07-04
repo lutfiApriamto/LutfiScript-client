@@ -7,35 +7,35 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post('https://lutfiscript-api.vercel.app/api/auth/login', { email, password })
-      .then(response => {
-        const username = jwtDecode(response.data.token);
-        localStorage.setItem("username", username.username);
-        toast.success("Berhasil Login", {
-          position: "top-center"
-        });
-        navigate('/lutfiscript');
-      })
-      .catch(err => {
-        if (err.response && err.response.data.message) {
-          toast.error(err.response.data.message, {
-            position: "top-center"
-          });
-        } else {
-          toast.error("Terjadi kesalahan saat login", {
-            position: "top-center"
-          });
+    try {
+      const response = await toast.promise(
+        axios.post('https://lutfiscript-api.vercel.app/api/auth/login', { email, password }),
+        {
+          pending: 'Logging in...',
+          success: 'Login successful!',
+          error: 'Failed to log in'
         }
-        console.log(err);
-      });
+      );
+
+      const username = jwtDecode(response.data.token);
+      localStorage.setItem("username", username.username);
+      navigate('/lutfiscript');
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("An error occurred while logging in");
+      }
+      console.error(error);
+    }
   };
 
   return (
@@ -51,13 +51,13 @@ const LoginPage = () => {
               Email
             </label>
             <input type="email" placeholder="Email ..." id="email" onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-sm bg-slate-500 text-xl mb-1 placeholder:text-sm px-4 pb-2 pt-1 md:px-3 md:pb-1 md:pt-0 lg:pt-3 lg:pb-2 lg:placeholder:text-lg lg:mb-4" />
+              className="w-full rounded-sm bg-slate-500 text-xl mb-1 placeholder:text-sm px-4 pb-2 pt-1 md:px-3 md:pb-1 md:pt-0 lg:pt-3 lg:pb-2 lg:placeholder:text-lg lg:mb-4"/>
 
             <label htmlFor="password" className="text-white  block font-bold mb-1 text-lg md:text-md lg:text-xl">
               Password
             </label>
             <input type="password" placeholder="Password ..." id="password" onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-sm bg-slate-500 text-xl mb-1 placeholder:text-sm px-4 pb-2 pt-1 md:px-3 md:pb-1 md:pt-0 lg:pt-3 lg:pb-2 lg:placeholder:text-lg lg:mb-4" />
+              className="w-full rounded-sm bg-slate-500 text-xl mb-1 placeholder:text-sm px-4 pb-2 pt-1 md:px-3 md:pb-1 md:pt-0 lg:pt-3 lg:pb-2 lg:placeholder:text-lg lg:mb-4"/>
             <p className="text-sm text-white mb-3 mt-2 block capitalize lg:text-lg lg:mb-4">don't have an account ?{" "}
               <Link to="/register" className="text-yellow-300 italic font-bold"> Register</Link>
             </p>
@@ -67,7 +67,7 @@ const LoginPage = () => {
             </button>
             <Link to="/forgotpassword" className="text-yellow-300 italic underline">Forgot password ?</Link>
           </form>
-          <p className="text-white text-center mt-3 text-sm italic font-thin lg:mt-5">Copyright © 2024 by{" "} <span className="text-yellow-300">LutfiScript</span> | All Rigths Reserved.</p>
+          <p className="text-white text-center mt-3 text-sm italic font-thin lg:mt-5">Copyright © 2024 by{" "} <span className="text-yellow-300">LutfiScript</span> | All Rights Reserved.</p>
         </div>
       </section>
       <ToastContainer position="top-center" />
