@@ -44,7 +44,7 @@ const ForgotPassword = () => {
             if (err.response && err.response.status === 404){
                 toast.error("Email not found")
             } else {
-                toast.error(err.response.data.message)
+                toast.error(err)
             }
         }
     }
