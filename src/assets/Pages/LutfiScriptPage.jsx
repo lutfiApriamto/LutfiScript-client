@@ -62,7 +62,9 @@ const LutfiScriptPage = () => {
         }
       );
       localStorage.removeItem("username");
-      navigate('/'); // Navigate setelah proses logout selesai
+      setTimeout(()=> {
+        navigate('/');
+      },2000)
     } catch (error) {
       toast.error("Terjadi kesalahan saat logout");
       console.error(error);
