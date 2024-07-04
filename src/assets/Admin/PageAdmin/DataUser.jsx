@@ -25,8 +25,7 @@ const DataUser = () => {
     //     }
     // }
 
-    const deleteUser = async (e, id) => {
-        e.preventDefault();
+    const deleteUser = async (id) => {
         try {
             const response = await toast.promise(
                 axios.delete(`https://lutfiscript-api.vercel.app/api/auth/${id}/deleteUser`),
