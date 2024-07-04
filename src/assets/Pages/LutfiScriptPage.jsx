@@ -34,36 +34,41 @@ const LutfiScriptPage = () => {
   }, [navigate]);
 
   axios.defaults.withCredentials = true
-  // const handleLogout = () => {
-  //   localStorage.removeItem("token")
-  //   localStorage.removeItem("username")
-  //   axios.get('https://lutfiscript-api.vercel.app/api/auth/logout')
-  //   .then(res => {
-  //     if(res.data.status){
-  //       navigate('/')
-  //     }
-  //   }).catch(err => console.log(err)) 
-  // }
 
-  const handleLogout = async () => {
-    try {
-      await toast.promise(
-        axios.get('https://lutfiscript-api.vercel.app/api/auth/logout'),
-        {
-          pending: 'Logging out...',
-          success: 'Berhasil Logout!',
-          error: 'Failed to logout'
-        }
-      );
-      setTimeout(() => {
-        localStorage.removeItem("username");
-        navigate('/');
-      }, 1700)
-    } catch (error) {
-      toast.error("An error occurred while logging out");
-      console.error(error);
-    }
-  };
+  const ToastLogout = () =>{
+    toast.success('Berhasil Logout')
+  }
+  const handleLogout = () => {
+    ToastLogout
+    localStorage.removeItem("token")
+    localStorage.removeItem("username")
+    axios.get('https://lutfiscript-api.vercel.app/api/auth/logout')
+    .then(res => {
+      if(res.data.status){
+        navigate('/')
+      }
+    }).catch(err => console.log(err)) 
+  }
+
+  // const handleLogout = async () => {
+  //   try {
+  //     await toast.promise(
+  //       axios.get('https://lutfiscript-api.vercel.app/api/auth/logout'),
+  //       {
+  //         pending: 'Logging out...',
+  //         success: 'Berhasil Logout!',
+  //         error: 'Failed to logout'
+  //       }
+  //     );
+  //     setTimeout(() => {
+  //       localStorage.removeItem("username");
+  //       navigate('/');
+  //     }, 1700)
+  //   } catch (error) {
+  //     toast.error("An error occurred while logging out");
+  //     console.error(error);
+  //   }
+  // };
 
   const toggleMenu = () => {
     if (isMenuOpen) {
