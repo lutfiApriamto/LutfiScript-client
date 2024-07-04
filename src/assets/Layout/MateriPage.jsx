@@ -142,14 +142,15 @@ const MateriPage = () => {
                   htmlFor="suggestion"
                   className="w-full mb-1 block font-bold sm:text-xl sm:mb-3"
                 >
-                  suggestion
+                  Saran <span className="text-xs font-thin">{`(maksimal 250 karakter)`}</span>
                 </label>
                 <textarea
                   placeholder="suggestion..."
                   name="suggestion"
                   id="suggestion"
+                  maxLength={250}
                   onChange={(e) => setSuggestion(e.target.value)}
-                  className="w-full border border-black shadow-sm rounded-md px-3 py-2 mb-1 sm:mb-3"
+                  className="w-full border border-black h-44 rounded-md px-2 py-2"
                 />
               </div>
 
