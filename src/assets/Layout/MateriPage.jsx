@@ -56,7 +56,7 @@ const MateriPage = () => {
     <>
       <section
         id="hero"
-        className="w-full h-[50vh] sm:h-[75vh] flex justify-center py-28 mb-28 sm:mb-16 md:mb-12 lg:mb-20 lg:py-10 lg:h-[60vh]"
+        className="w-full h-[50vh] sm:h-[75vh] flex justify-center py-28 mb-28 sm:mb-16 md:mb-12 lg:mb-20 lg:py-14 lg:h-[60vh]"
       >
         <Link to="/lutfiscript" className="bg-yellow-300 hover:bg-yellow-500 absolute top-4 left-3 text-xs px-4 py-2 rounded-xl shadow-2xl capitalize font-bold cursor-pointer opacity-70 hover:opacity-100 transition duration-500 md:text-xl md:top-7 md:left-5 md:px-6 md:py-3 lg:text-base lg:top-4 lg:left-4">
           Back to Home
